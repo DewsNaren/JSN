@@ -1,0 +1,92 @@
+@use "../base/reset" as *;
+@use "../abstracts/index" as *;
+
+.home-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px,$fs-46px, $fs-46px) clamp(10px,$fs-28px, $fs-28px) clamp(20px, $fs-60px, $fs-60px);
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+    .logo-container .logo{
+        width:clamp(140px, $fs-292px, $fs-292px);
+        display: inline-block;
+        img{
+            width: 100%;
+        }
+    }
+    .header-actions{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        nav{
+            padding-right:clamp(15px, $fs-24px,$fs-24px);
+            ul{
+                display: flex;
+                margin-bottom: 0;
+                padding-left: 0;
+                li{
+                    list-style: none;
+                    .nav-link{
+                        font-size:clamp(14px, $fs-24px,$fs-24px);
+                        color: $white;
+                        font-weight: 300;
+                        position: relative;
+                        padding-inline: clamp(10px, $fs-31px, $fs-31px);
+                        
+                    }
+
+                    .nav-link::before{
+                        content: '';
+                        position: absolute;
+                        top: calc(clamp(15px, $fs-32px, $fs-32px) * -1);
+                        height: 4px;
+                        left: -3px;
+                        background-color: $orange-33;
+                    }
+                    .nav-link.active::before,.nav-link:hover::before{
+                        display: block;
+                        width: 105%
+                    }
+                }   
+            }
+        }
+        .book-btn{
+            font-size: clamp(14px, $fs-23px, $fs-23px);
+            padding: clamp(15px, $fs-33px, $fs-33px) clamp(20px, $fs-38px,$fs-38px) clamp(15px, $fs-33px, $fs-33px) clamp(20px, $fs-35px,$fs-35px) ;
+            border: none;
+            background-color: $orange-33;
+            font-weight: 500;
+            color: $white;
+            &:hover{
+                background-color:$white;
+                color: $orange-33;
+            }
+            &.not-active{
+                display: none;
+            }
+        }
+        
+    }
+    .nav-control-btn{
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: none;
+    }
+    .menu-btn{
+        z-index: 3;
+        pointer-events: none;
+    }
+    .close-btn{
+        display: none;
+        pointer-events: none;
+        img{
+            width: 20px;
+            height: auto;
+        }
+    }
+}

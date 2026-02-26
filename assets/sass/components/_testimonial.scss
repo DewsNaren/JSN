@@ -1,0 +1,140 @@
+@use "../abstracts/index" as *;
+.people-say{
+    padding: clamp(25px,6.3%, 6.3%) clamp(20px,10.4%, 10.4%) clamp(25px,7.4%, 7.4%);
+    h2{
+        font-family: "Lato", sans-serif !important;
+        font-size: clamp(24px, $fs-48px, $fs-48px);
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    &-desc{
+        font-size: clamp(13px, $fs-23px, $fs-23px);
+        color: $grey-c2;
+        font-family: "Lato", sans-serif !important;
+        font-weight: 500;
+        text-align: center;
+        width: 55%;
+        margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(25px, $fs-80px, $fs-80px);
+    }
+    .testimonial-slider-wrapper{
+        width: 100%;
+        overflow: hidden;
+        .testimonial-slider-container{
+            display: flex;
+            justify-content: center;
+            gap:clamp(20px, $fs-120px, $fs-120px);
+            .testimonial-card{
+                display: flex;
+                flex-direction: column;
+                gap: clamp(20px, $fs-40px, $fs-40px);
+                box-shadow: $box-shadow-2;
+                border-radius: 10px;
+                padding: clamp(20px, $fs-30px, $fs-30px) clamp(20px, $fs-30px, $fs-30px) clamp(20px, $fs-60px, $fs-60px);
+                position: relative;
+                flex: 0 0 43%; 
+                &-header{
+                    display: flex;
+                    gap: clamp(15px, $fs-25px, $fs-25px);
+                    .img-wrapper{
+                        width: clamp(42px, $fs-90px, $fs-90px);
+                        height: clamp(42px, $fs-90px, $fs-90px);
+                        border-radius: 50%;
+                        background-color: $grey-e9;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            width: clamp(40px, $fs-75px, 75px);
+                        }
+                    }
+                    .name{
+                        font-family: "Lato", sans-serif !important;
+                        font-size: clamp(14px, $fs-25px, $fs-25px);
+                        font-weight: 700;
+                        color: $blue-7d;
+                        margin-bottom: 8px;
+                        line-height: 1;
+                    }
+                    .role{
+                        font-family: "Lato", sans-serif !important;
+                        font-size: clamp(12px, $fs-20px, $fs-20px);
+                        font-weight: 500;
+                        color: $blue-d1;
+                        line-height: 1;
+                        margin-bottom: 15px;
+                    }
+                    .rating{
+                        display: flex;
+                        gap: 5px;
+                        img{
+                            width: clamp(11px, $fs-15px, $fs-15px);
+                        }
+                    }
+
+                }
+                &-body{
+                    .desc-1{
+                        font-family: "Lato", sans-serif !important;
+                        font-size: clamp(13px, $fs-20px, $fs-20px);
+                        color: $black-60;
+                        margin-bottom: 10px;
+                        line-height: 1.8;
+                    }
+                }
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 25px;
+                    left: 5px;
+                    transform: translateX(-50%);
+                    width: 5px;
+                    height: 110px;
+                    background-color: $orange-37;
+                }
+            }
+        }
+        .testimonial-indicator-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: clamp(20px, $fs-40px, $fs-40px);
+            padding-bottom: 2px;
+            gap: clamp(15px, $fs-25px, $fs-25px);
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: clamp(17px, $fs-70px, $fs-70px);
+                height: clamp(17px, $fs-70px,$fs-70px);
+                border-radius: 50%;
+                border: none;
+                background-color: white;
+                box-shadow: $box-shadow-1;
+                img{
+                    width:clamp(8px, $fs-16px, 16px);
+                    display: block;
+                }
+            }
+        }
+            
+            
+    }
+    .client-wrapper{
+        padding-top: clamp(25px,7.4%, 7.4%);
+        overflow: hidden;
+        .client-container{
+            display: flex;
+            gap: clamp(20px, $fs-40px, $fs-40px);
+            .img-container{
+                flex:  0 0 25%;
+                img{
+                    width: clamp(110px, $fs-225px, $fs-225px);
+                    display: block;
+                }
+            }
+           
+        }
+    }
+
+  }

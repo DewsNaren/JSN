@@ -1,0 +1,25 @@
+//home
+@use "./pages/home" as *;
+@use "./pages/home-responsive" as *;
+
+
+//about
+@use "./pages/about" as *;
+@use "./pages/about-responsive" as *;
+
+
+//product
+@use "./pages/product" as *;
+
+
+//media
+@use "./pages/media" as *;
+@use "./pages/media-responsive" as *;
+
+//services
+@use "./pages/services" as *;
+
+
+//contact
+@use "./pages/contact" as *;
+@use "./pages/contact-responsive" as *;
