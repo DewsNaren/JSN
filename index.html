@@ -10,9 +10,11 @@
 <body>
   <header class="home-header">
     <div class="logo-container">
-      <a href="./index.html" class="logo"
-        ><img src="./assets/images/global/logo_white.png" alt="logo white"
-      /></a>
+      <a href="./index.html" class="logo">
+        <img src="./assets/images/global/logo_white.png" class="logo-white" alt="logo white"/>
+        <img src="./assets/images/global/logo_black.png" class="logo-black" alt="logo black" />
+        
+    </a>
     </div>
     <div class="header-actions">
       <button
@@ -26,7 +28,7 @@
         <ul>
           <li><a href="#" class="nav-link active">Home</a></li>
           <li><a href="#" class="nav-link">About Us</a></li>
-            <li><a href="#" class="nav-link">Services <img src="./assets/images/global/menu_dropdown.png" alt="dropdown"></a></li>
+            <li><a href="#" class="nav-link">Services <img src="./assets/images/global/menu_dropdown.png" class="dropdown-arrow" alt="dropdown"></a></li>
             <li><a href="#" class="nav-link">Contact Us</a></li>
         </ul>
       </nav>
@@ -59,32 +61,32 @@
         <span class="plus"></span>
         <img src="./assets/images/home/ic_wcu_4.png" class="ic-img4" alt="ic wcu 4"/>
       </div>
-
-      <div class="choose-us-card-container">
-        <div class="choose-us-card">
-          <div class="img-wrapper">
-            <img src="./assets/images/home/engineering_rigor.jpg" alt="engineering rigor" />
-          </div>
-          <div class="card-body-container">
-            <h3 class="text-capitalize">engineering rigor</h3>
-            <p class="desc-1">We are a bunch of Data Scientists and Modern Programming Specialists. We impart our extreme programming rigor and best.</p>
-          </div>
-          
-          <a href="#" class="learn-more-btn">Learn More <img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></a>
-        </div>
-        <div class="choose-us-card">
-          <div class="img-wrapper">
-            <img src="./assets/images/home/extreme_agility.jpg" alt="extreme agility" />
-          </div>
-
-          <div class="card-body-container">
-            <h3 class="text-capitalize">extreme agility</h3>
-            <p class="desc-1">We celebrate "Agile Practices" &#64; our offices. The mostly seen ceremonies &#64; our work place are "Planning Poker", "Scrum Meeting".</p>
+      <div class="choose-us-card-wrapper">
+        <div class="choose-us-card-container">
+          <div class="choose-us-card">
+            <div class="img-wrapper">
+              <img src="./assets/images/home/engineering_rigor.jpg" alt="engineering rigor" />
+            </div>
+            <div class="card-body-container">
+              <h3 class="text-capitalize">engineering rigor</h3>
+              <p class="desc-1">We are a bunch of Data Scientists and Modern Programming Specialists. We impart our extreme programming rigor and best.</p>
+            </div>
             
+            <a href="#" class="learn-more-btn">Learn More <img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></a>
           </div>
-          <a href="#" class="learn-more-btn">Learn More <img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></a>
-        </div>
-        <div class="choose-us-card">
+          <div class="choose-us-card">
+            <div class="img-wrapper">
+              <img src="./assets/images/home/extreme_agility.jpg" alt="extreme agility" />
+            </div>
+
+            <div class="card-body-container">
+              <h3 class="text-capitalize">extreme agility</h3>
+              <p class="desc-1">We celebrate "Agile Practices" &#64; our offices. The mostly seen ceremonies &#64; our work place are "Planning Poker", "Scrum Meeting".</p>
+              
+            </div>
+            <a href="#" class="learn-more-btn">Learn More <img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></a>
+          </div>
+          <div class="choose-us-card">
           <div class="img-wrapper">
             <img src="./assets/images/home/poc_first.jpg" alt="poc first" />
           </div>
@@ -95,6 +97,8 @@
           
           <a href="#" class="learn-more-btn">Learn More <img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></a>
         </div>
+      </div>
+      <button class="arrow-btn"><img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></button> 
     </section>
     <section class="love-to-do">
       <h2>What We Love To Do</h2>
@@ -146,7 +150,6 @@
       </div>
     </section>
     <section class="help-you">
-      <!-- <img src="./assets/images/home/grow_your_business.jpg" alt="grow your business" class="help-you-img"/> -->
       <h2>We Help You to Grow Your Business</h2>
       <p class="help-you-desc">Lorem ipsum dolor sit amet quam enim, luctus vivamus nulla at amet</p>
       <div class="detail-wrapper">
@@ -243,11 +246,10 @@
               <p class="desc-1">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
             </div>
           </div>
-          
         </div>
         <div class="testimonial-indicator-container">
-            <button class="prev-btn"><img src="./assets/images/global/orange_arrow_left.png" alt="orange arrow left"></button>
-            <button class="next-btn"><img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></button>
+          <button class="prev-btn"><img src="./assets/images/global/orange_arrow_left.png" alt="orange arrow left"></button>
+          <button class="next-btn"><img src="./assets/images/global/orange_arrow_right.png" alt="orange arrow right"></button>
         </div>
       </div>
       <div class="client-wrapper">
@@ -257,24 +259,111 @@
           </div>
           
           <div class="img-container">
-              <img src="./assets/images/home/brand-2.png" alt="brand 2">
+            <img src="./assets/images/home/brand-2.png" alt="brand 2">
           </div>
           
           <div class="img-container">
               <img src="./assets/images/home/brand-3.png" alt="brand 3">
           </div>
-          
-          
+      
           <div class="img-container">
             <img src="./assets/images/home/brand-4.png" alt="brand 4">
           </div>
           <div class="img-container">
             <img src="./assets/images/home/brand-1.png" alt="brand 5">
           </div>
-          
+        
         </div>
       </div>
     </section>
   </main>
+  <footer>
+    <div class="social-header-container">
+      <h2>Follow on Instagram</h2>
+      <p class="company-name text-capitalize">@ JumpStartNinja</p>
+    </div>
+    
+    <div class="social-card-container">
+      <div class="social-card">
+        <img src="./assets/images/global/soc1.jpg" alt="soc1">
+      </div>
+      <div class="social-card">
+        <img src="./assets/images/global/soc2.jpg" alt="soc2">
+      </div>
+      <div class="social-card">
+        <img src="./assets/images/global/soc3.jpg" alt="soc3">
+      </div>
+      <div class="social-card">
+        <img src="./assets/images/global/soc4.jpg" alt="soc4">
+      </div>
+      <div class="social-card">
+        <img src="./assets/images/global/soc5.jpg" alt="soc5">
+      </div>
+    </div>
+    <div class="footer-content-wrapper">
+      <div class="footer-content-container">
+        <div class="footer-content">
+          <img class="footer-logo" src="./assets/images/global/logo_black.png" alt="logo black">
+          <p class="desc-1">We have been recognized as "Preferred Partner" for Microsoft Data + Al Workloads</p>
+          <p class="desc-2">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt.</p>
+          <div class="social-link-container">
+            <ul>
+              <li><a href="#" class="social-link"><img src="./assets/images/global/twitter.png" alt="twitter"></a></li>
+              <li><a href="#" class="social-link"><img src="./assets/images/global/facebook.png" alt="facebook"></a></li>
+              <li><a href="#" class="social-link"><img src="./assets/images/global/instagram.png" alt="instagram"></a></li>
+              <li><a href="#" class="social-link"><img src="./assets/images/global/youtube.png" alt="youtube"></a></li>
+              <li><a href="#" class="social-link"><img src="./assets/images/global/linkedin.png" alt="linkedin"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about">
+          <h3 class="text-capitalize">about company</h3>
+          <ul>
+            <li><a href="#" class="text-capitalize">about us</a></li>
+            <li><a href="#" class="text-capitalize">why choose us</a></li>
+            <li><a href="#" class="text-capitalize">our services</a></li>
+            <li><a href="#" class="text-capitalize">our team</a></li>
+            <li><a href="#" class="text-capitalize">contact us</a></li>
+          </ul>
+        </div>
+        <div class="our-services">
+          <h3 class="text-capitalize">our services</h3>
+          <ul>
+            <li><a href="#" class="text-capitalize">cloud adoption</a></li>
+            <li><a href="#" class="text-capitalize">data engineering</a></li>
+            <li><a href="#" class="text-capitalize">artificial intelligence</a></li>
+            <li><a href="#" class="text-capitalize">conversational commerce</a></li>
+            <li><a href="#" class="text-capitalize">azure consulting</a></li>
+          </ul>
+        </div>
+        <div class="contact">
+          <h3 class="text-capitalize">contact address</h3>
+          <div class="address-1">
+            <p class="city text-capitalize">chennai</p>
+            <p>9/422A, 1st Street Sivagami Nagar</p>
+            <p>Medavakkam, Chennai - 600100</p>
+          </div>
+          <div class="address-2">
+            <p class="city text-capitalize">guntur</p>
+            <p>Flat No:3,Door no: 29-2-160</p>
+            <p>Ramachandra Residency 2/3 Brodipet,</p>
+            <p>Guntur 522002</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="copyright-container">
+      <p class="copyright">&copy; 2026 JumpStartNinja. All rights reserved</p>
+      <div>
+        <a href="#" class="privacy-link">Privacy Policy</a>
+        <a href="#" class="terms-link">Terms of use</a>
+      </div>
+    </div>
+    <div class="chat-btn-container">
+      <button class="chat-btn"><img src="./assets/images/global/chat.png" alt="chat"></button>
+    </div>
+    <script src="./assets/js/global.js"></script>
+  </footer>
 </body>
 </html>

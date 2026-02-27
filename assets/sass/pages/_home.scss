@@ -33,14 +33,14 @@
         background-color: $black-30;
         color: $orange-47;
         border: 2px solid $orange-47;
-        padding: clamp(17px, $fs-26px, $fs-26px) clamp(20px, $fs-40px, $fs-40px);
+        padding: clamp(14px, $fs-26px, $fs-26px) clamp(20px, $fs-40px, $fs-40px);
         font-size: clamp(14px, $fs-23px, $fs-23px);
         font-weight: 500;
         cursor: pointer;
         display: flex;
         align-items: center;
         gap: 18px;
-        margin: 70px auto 0;
+        margin: clamp(30px, $fs-70px, $fs-70px) auto 0;
 
         img {
           width: 12px;
@@ -65,7 +65,7 @@
         font-weight: 900;
         text-align: center;
     }
-    &-desc{
+    .choose-us-desc{
         font-size: clamp(13px, $fs-23px, $fs-23px);
         color: $grey-c2;
         font-family: "Lato", sans-serif !important;
@@ -73,23 +73,23 @@
         text-align: center;
         margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(25px, $fs-75px, $fs-75px);
     }
-    &-img-container{
+    .choose-us-img-container{
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: clamp(20px, $fs-60px, $fs-60px);
+        gap: clamp(30px, $fs-60px, $fs-60px);
         margin-bottom: clamp(30px, $fs-89px, $fs-89px);
         .ic-img1{
-            width: clamp(80px, $fs-115px, 114px);
+            width: clamp(55px, $fs-115px, 114px);
         }
         .ic-img2{
-            width: clamp(80px, $fs-110px, 110px);
+            width: clamp(55px, $fs-110px, 110px);
         }
         .ic-img3{
-            width: clamp(80px, $fs-109px, 109px);
+            width: clamp(55px, $fs-109px, 109px);
         }
         .ic-img4{
-            width: clamp(80px, $fs-103px, 103px);
+            width: clamp(55px, $fs-103px, 103px);
         }
         .plus {
             position: relative;
@@ -123,68 +123,104 @@
 
        
     }
-    &-card-container{ 
-        display: flex;
-        gap: clamp(20px, $fs-52px, $fs-52px);
-        flex-wrap: wrap;
-        justify-content: center;
+    .choose-us-card-wrapper{
+        position: relative;
         padding-inline: 5%;
-        .choose-us-card{
-            background-color: $white;
-            width: 100%;
-            flex:0 0 calc(100% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
-            padding: clamp(12px, $fs-20px, $fs-20px) clamp(12px, $fs-20px, $fs-20px) clamp(20px, $fs-40px, $fs-40px);
-            box-shadow: $box-shadow-1;
+        .choose-us-card-container{ 
             display: flex;
-            flex-direction: column;
-            .img-wrapper{
+            gap: clamp(20px, $fs-52px, $fs-52px);
+            justify-content: center;
+            overflow: hidden;
+            .choose-us-card{
+                background-color: $white;
                 width: 100%;
-                margin: 0 auto clamp(12px, $fs-45px, $fs-45px);
-                img{
+                flex:0 0 calc(100% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
+                padding: clamp(12px, $fs-20px, $fs-20px) clamp(12px, $fs-20px, $fs-20px) clamp(20px, $fs-40px, $fs-40px);
+                box-shadow: $box-shadow-1;
+                display: flex;
+                flex-direction: column;
+                .img-wrapper{
                     width: 100%;
+                    margin: 0 auto clamp(12px, $fs-45px, $fs-45px);
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        transition: transform 0.4s ease-in;
+                    }
+                    &:hover{
+                        img{
+                            transform: scale(1.07);
+                        }
+                    }
                 }
-            }
-            .card-body-container{
-                padding-inline: 5px;
-                h3{
-                    font-size: clamp(18px, $fs-25px, $fs-25px);
-                    font-weight: 900;
-                    line-height: 1.18;
-                    margin-bottom: clamp(18px, $fs-28px, $fs-28px);
-                    font-family: "Lato", sans-serif !important  ;
-                    text-transform: capitalize;
+                .card-body-container{
+                    padding-inline: 5px;
+                    h3{
+                        font-size: clamp(16px, $fs-25px, $fs-25px);
+                        font-weight: 900;
+                        line-height: 1.18;
+                        margin-bottom: clamp(12px, $fs-28px, $fs-28px);
+                        font-family: "Lato", sans-serif !important  ;
+                        text-transform: capitalize;
+                    }
+                    .desc-1{
+                        font-size: clamp(13px, $fs-19_5px, $fs-19_5px);
+                        color: $grey-70;
+                        font-family: "Lato", sans-serif !important  ;
+                        // font-family: "Open Sans", sans-serif !important;
+                        margin-bottom: clamp(18px, $fs-50px, $fs-50px);
+                        line-height: 1.33;
+                        width: 97%;
+                    }
                 }
-                .desc-1{
-                    font-size: clamp(13px, $fs-19_5px, $fs-19_5px);
-                    color: $grey-70;
-                    font-family: "Lato", sans-serif !important  ;
-                    // font-family: "Open Sans", sans-serif !important;
-                    margin-bottom: clamp(18px, $fs-50px, $fs-50px);
-                    line-height: 1.33;
-                    width: 97%;
-                }
-            }
-            .learn-more-btn{
-                font-size: clamp(14px, $fs-18px, $fs-18px);
-                color: $orange-37;
-                font-weight: 700;
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding-left: 5px;
-                position: relative;
-                transition: transform 0.3s ease-in-out;
-               margin-top: auto;
-                img{
-                    width: 8px;
-                    height: 12px;
-                }
-                &:hover{
-                    transform: translateX(5px); 
+                .learn-more-btn{
+                    font-size: clamp(14px, $fs-18px, $fs-18px);
+                    color: $orange-37;
+                    font-weight: 700;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding-left: 5px;
+                    position: relative;
+                    transition: transform 0.3s ease-in-out;
+                    margin-top: auto;
+                    img{
+                        width: 8px;
+                        height: 12px;
+                    }
+                    &:hover{
+                        transform: translateX(5px); 
+                    }
                 }
             }
         }
+        .arrow-btn{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: clamp(20px, $fs-40px, $fs-40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(22px, 3.6vw, 3.6vw);
+            height: clamp(22px, 3.6vw, 3.6vw);
+            border-radius: 50%;
+            border: none;
+            background-color: white;
+            box-shadow: $box-shadow-3;
+            img{
+                width: clamp(8px, $fs-16px, $fs-16px);
+            }
+            &:hover{
+                box-shadow: $box-shadow-2;
+                img{
+                    filter: invert(1);
+                }
+            }
+        }
+       
     }
+    
   }
   .love-to-do{
     padding: clamp(25px,6.8%, 6.8%) clamp(20px,10.3%, 10.3%) clamp(25px,6.7%, 6.7%);
@@ -210,11 +246,11 @@
         .img-wrapper{
             text-align: center;
             img{
-                width: clamp(34px, $fs-76px, 76px);
+                width: clamp(38px, $fs-76px, 76px);
                 margin-bottom: clamp(18px, $fs-40px, $fs-40px);
             }
             .img-text{
-                font-size: clamp(14px, $fs-20px, $fs-20px);
+                font-size: clamp(13px, $fs-20px, $fs-20px);
                 line-height: 1.2;
             }
             &.hidden{
@@ -234,11 +270,19 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            padding: clamp(15px, $fs-21px, $fs-21px) clamp(20px, $fs-35px, $fs-35px);
+            padding: clamp(12px, $fs-21px, $fs-21px) clamp(20px, $fs-35px, $fs-35px);
             cursor: pointer;
             img{
                 width: 11px;
             }
+            &:hover{
+                border: 1px solid $blue-c5;
+                color: $blue-c5;
+                img{
+                    filter: invert(1);
+                }
+            }
+
         }
     }
   }
@@ -269,7 +313,7 @@
               
         .detail-container{
             position: relative;
-            width: clamp(130px, $fs-245px, $fs-245px);
+            width: clamp(150px, $fs-245px, $fs-245px);
             img{
                 position: absolute;
                 z-index: 0;
@@ -312,5 +356,137 @@
   }
   
 }
-  
 
+@media screen and (max-width:1400px){
+    .home-wrapper .love-to-do .btn-container .load-more-btn {
+        img{
+            width: 10px;
+        }
+    }
+}
+
+@media screen and (max-width:1200px){
+    .home-wrapper{
+        .choose-us{
+            padding: clamp(25px, 7.3%, 7.3%) 20px clamp(25px, 6.2%, 6.2%);
+            .choose-us-card-wrapper .choose-us-card-container .choose-us-card .learn-more-btn img {
+                width: 7px;
+            }
+        }
+        .love-to-do{
+            padding: clamp(25px, 6.8%, 6.8%) clamp(20px, 9.7%, 9.7%) clamp(25px, 6.7%, 6.7%);
+            .btn-container .load-more-btn {
+                img{
+                    width: 9px;
+                }
+            }
+        } 
+        
+    }
+
+}
+
+
+@media screen and (max-width:1024px){
+    .home-wrapper{
+        .choose-us{
+            .choose-us-card-wrapper{
+                padding-inline: 4%;
+                 .choose-us-card-container{
+                    .choose-us-card{
+                        flex:0 0 calc(110% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
+                        padding: 10px 10px 18px;
+                        .card-body-container{
+                            padding-left: 0;
+                            h3{
+                                font-size: 15px;
+                            }
+                            .desc-1{
+                                font-size: 12px;
+                            }
+                        } 
+                        .learn-more-btn{
+                            padding-left: 0;
+                        }
+                    } 
+
+                } 
+                .arrow-btn{
+                    right: 5px;
+                }
+            }  
+           
+        }
+        .love-to-do{
+            padding: clamp(25px, 6.8%, 6.8%) clamp(20px, 7.8%, 7.8%) clamp(25px, 6.7%, 6.7%);
+            .img-container {
+                grid-template-columns: repeat(4,1fr);
+                gap: clamp(20px, $fs-60px, $fs-60px);
+            }
+            .btn-container .load-more-btn {
+                img{
+                    width: 9px;
+                }
+            }
+        } 
+    }
+
+}
+
+@media screen and (max-width:768px){
+    .home-wrapper{
+        .hero-section{
+            .banner-img{
+                min-height: 350px;
+            }
+        }
+        .choose-us{
+            .choose-us-card-wrapper{
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+                .choose-us-card-container{
+                    width:100%;
+                    justify-content: flex-start;
+                    gap: 35px;
+                    .choose-us-card{
+                        flex:0 0 calc(100% / 2 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                    }
+                }
+                .arrow-btn{
+                    position: relative;
+                    top: 0;
+                    transform: translateY(0);
+                    margin: 0 auto;
+                    width: 35px;
+                    height: 35px;
+                    img{
+                        width: 9px;
+                    }
+                }
+
+            }  
+        }
+    }
+}
+
+@media screen and (max-width:600px){
+    .home-wrapper{
+        .hero-section{
+            .banner-img{
+                min-height: 350px;
+            }
+        }
+        .choose-us{
+            .choose-us-card-wrapper{
+               padding-inline: 0; 
+            }
+        }
+        .love-to-do{
+            padding: clamp(25px, 6.8%, 6.8%) 20px clamp(25px, 6.7%, 6.7%);
+            .img-container{
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+    }
+}

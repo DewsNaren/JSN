@@ -8,7 +8,7 @@
         text-align: center;
         margin-bottom: 0px;
     }
-    &-desc{
+    .people-say-desc{
         font-size: clamp(13px, $fs-23px, $fs-23px);
         color: $grey-c2;
         font-family: "Lato", sans-serif !important;
@@ -86,7 +86,7 @@
                     content: '';
                     position: absolute;
                     top: 25px;
-                    left: 5px;
+                    left: 3px;
                     transform: translateX(-50%);
                     width: 5px;
                     height: 110px;
@@ -105,15 +105,21 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: clamp(17px, $fs-70px, $fs-70px);
-                height: clamp(17px, $fs-70px,$fs-70px);
+                width: clamp(35px, $fs-70px, $fs-70px);
+                height: clamp(35px, $fs-70px,$fs-70px);
                 border-radius: 50%;
                 border: none;
                 background-color: white;
                 box-shadow: $box-shadow-1;
                 img{
-                    width:clamp(8px, $fs-16px, 16px);
-                    display: block;
+                    width:clamp(9px, $fs-16px, 16px);
+                    display: block; 
+                }
+                &:hover{
+                    box-shadow: $box-shadow-2;
+                    img{
+                        filter: invert(1);
+                    }
                 }
             }
         }
@@ -137,4 +143,58 @@
         }
     }
 
-  }
+}
+
+
+@media screen and (max-width:1400px){
+    .people-say .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+        &::before{
+            top: 20px;
+            height: 90px;
+        }
+    }
+}
+
+@media screen and (max-width:1200px){
+    .people-say{
+        padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 9.8%, 9.8%) clamp(25px, 7.4%, 7.4%);
+    }
+}
+
+@media screen and (max-width:1024px){
+    .people-say{
+        padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 7.8%, 7.8%) clamp(25px, 7.4%, 7.4%);
+        .people-say-desc{
+            width: 60%;
+        }
+        .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+            flex: 0 0 46%;
+        }
+    }
+}
+@media screen and (max-width:900px){
+    .people-say .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+        flex: 0 0 65%;
+    }
+}
+@media screen and (max-width:768px){
+    .people-say{
+        .people-say-desc{
+            width: 70%;
+        }
+        .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+            flex: 0 0 100%;
+            &::before{
+                width: 4px;
+                top: 20px;
+                height: 90px;
+            }
+        }
+    } 
+}
+
+@media screen and (max-width:600px){
+    .people-say .people-say-desc{
+        width: 100%;
+    }
+}
