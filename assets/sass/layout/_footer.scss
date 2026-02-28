@@ -258,6 +258,9 @@ footer{
             flex-wrap: wrap;
             .footer-content{
                 width: 55%;
+                .desc-2{
+                    font-size: 13px;
+                }
             }
             .about,.contact{
                 padding-top: 0;
@@ -293,5 +296,30 @@ footer{
         }
         }
     } 
-   
+}
+
+@media screen and (max-width:600px){
+    footer .footer-content-wrapper{
+        .footer-content-container{
+            .footer-content{
+                width: 100%;
+                .desc-2{
+                    font-size: 13px;
+                }
+            }
+             .about,.contact{
+                padding-left: 0%;
+                width: 40%;
+                margin: 0;
+            }
+            .our-services{
+                width: 40%;
+            }
+            .contact{
+                width: 100%;
+                
+            }
+        }
+    }
+
 }

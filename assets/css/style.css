@@ -501,6 +501,9 @@ footer .chat-btn-container .chat-btn:hover {
   footer .footer-content-wrapper .footer-content-container .footer-content {
     width: 55%;
   }
+  footer .footer-content-wrapper .footer-content-container .footer-content .desc-2 {
+    font-size: 13px;
+  }
   footer .footer-content-wrapper .footer-content-container .about, footer .footer-content-wrapper .footer-content-container .contact {
     padding-top: 0;
     width: 40%;
@@ -525,6 +528,25 @@ footer .chat-btn-container .chat-btn:hover {
   }
   footer .footer-content-wrapper .footer-content-container .about, footer .footer-content-wrapper .footer-content-container .contact {
     padding-left: 2%;
+  }
+}
+@media screen and (max-width: 600px) {
+  footer .footer-content-wrapper .footer-content-container .footer-content {
+    width: 100%;
+  }
+  footer .footer-content-wrapper .footer-content-container .footer-content .desc-2 {
+    font-size: 13px;
+  }
+  footer .footer-content-wrapper .footer-content-container .about, footer .footer-content-wrapper .footer-content-container .contact {
+    padding-left: 0%;
+    width: 40%;
+    margin: 0;
+  }
+  footer .footer-content-wrapper .footer-content-container .our-services {
+    width: 40%;
+  }
+  footer .footer-content-wrapper .footer-content-container .contact {
+    width: 100%;
   }
 }
 .people-say {
@@ -749,7 +771,7 @@ footer .chat-btn-container .chat-btn:hover {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: clamp(10px, 0.93vw, 0.93vw);
   margin: clamp(30px, 3.6vw, 3.6vw) auto 0;
 }
 .home-wrapper .hero-section .hero-content-container button img {
@@ -1067,6 +1089,9 @@ footer .chat-btn-container .chat-btn:hover {
   }
 }
 @media screen and (max-width: 1024px) {
+  .home-wrapper .hero-section .hero-content-container button img {
+    width: 9px;
+  }
   .home-wrapper .choose-us .choose-us-card-wrapper {
     padding-inline: 4%;
   }
@@ -1097,10 +1122,16 @@ footer .chat-btn-container .chat-btn:hover {
     gap: clamp(20px, 3.13vw, 3.13vw);
   }
   .home-wrapper .love-to-do .btn-container .load-more-btn img {
-    width: 9px;
+    width: 8px;
   }
 }
 @media screen and (max-width: 768px) {
+  .home-wrapper .hero-section .hero-content-container button img {
+    width: 8px;
+  }
+  .home-wrapper .hero-section .hero-content-container button {
+    border-width: 1px;
+  }
   .home-wrapper .hero-section .banner-img {
     min-height: 350px;
   }
@@ -1112,10 +1143,10 @@ footer .chat-btn-container .chat-btn:hover {
   .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container {
     width: 100%;
     justify-content: flex-start;
-    gap: 35px;
+    gap: 30px;
   }
   .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container .choose-us-card {
-    flex: 0 0 calc(50% - clamp(20px, 2.75vw, 2.75vw) * 1);
+    flex: 0 0 calc(50% - clamp(15px, 2.75vw, 2.75vw) * 1);
   }
   .home-wrapper .choose-us .choose-us-card-wrapper .arrow-btn {
     position: relative;
@@ -1133,8 +1164,42 @@ footer .chat-btn-container .chat-btn:hover {
   .home-wrapper .hero-section .banner-img {
     min-height: 350px;
   }
+  .home-wrapper .hero-section .hero-content-container {
+    width: 100%;
+    margin: 0 auto;
+  }
   .home-wrapper .choose-us .choose-us-card-wrapper {
     padding-inline: 0;
+  }
+  .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container {
+    gap: 25px;
+  }
+  .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container .choose-us-card {
+    flex: 0 0 calc(50% - clamp(20px, 2.75vw, 2.75vw) * 1);
+  }
+  .home-wrapper .love-to-do {
+    padding: clamp(25px, 6.8%, 6.8%) 20px clamp(25px, 6.7%, 6.7%);
+  }
+  .home-wrapper .love-to-do .img-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 600px) {
+  .home-wrapper .hero-section .banner-img {
+    min-height: 350px;
+  }
+  .home-wrapper .hero-section .hero-content-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .home-wrapper .choose-us .choose-us-card-wrapper {
+    padding-inline: 0;
+  }
+  .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container {
+    gap: 25px;
+  }
+  .home-wrapper .choose-us .choose-us-card-wrapper .choose-us-card-container .choose-us-card {
+    flex: 0 0 calc(50% - clamp(20px, 2.75vw, 2.75vw) * 1);
   }
   .home-wrapper .love-to-do {
     padding: clamp(25px, 6.8%, 6.8%) 20px clamp(25px, 6.7%, 6.7%);

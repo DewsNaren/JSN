@@ -39,7 +39,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 18px;
+        gap: clamp(10px, $fs-18px, $fs-18px);
         margin: clamp(30px, $fs-70px, $fs-70px) auto 0;
 
         img {
@@ -389,6 +389,9 @@
 
 @media screen and (max-width:1024px){
     .home-wrapper{
+        .hero-section .hero-content-container button img {
+            width: 9px;
+        }
         .choose-us{
             .choose-us-card-wrapper{
                 padding-inline: 4%;
@@ -425,7 +428,7 @@
             }
             .btn-container .load-more-btn {
                 img{
-                    width: 9px;
+                    width: 8px;
                 }
             }
         } 
@@ -436,6 +439,12 @@
 @media screen and (max-width:768px){
     .home-wrapper{
         .hero-section{
+            .hero-content-container button{
+                img {
+                    width: 8px;
+                }
+                border-width: 1px;
+            } 
             .banner-img{
                 min-height: 350px;
             }
@@ -448,9 +457,9 @@
                 .choose-us-card-container{
                     width:100%;
                     justify-content: flex-start;
-                    gap: 35px;
+                    gap: 30px;
                     .choose-us-card{
-                        flex:0 0 calc(100% / 2 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                        flex:0 0 calc(100% / 2 - clamp(15px, $fs-52px, $fs-52px) * 1);
                     }
                 }
                 .arrow-btn{
@@ -476,10 +485,51 @@
             .banner-img{
                 min-height: 350px;
             }
+            .hero-content-container{
+                width: 100%;
+                margin: 0 auto;
+            }
         }
         .choose-us{
             .choose-us-card-wrapper{
                padding-inline: 0; 
+                .choose-us-card-container{
+                    gap: 25px;
+                    .choose-us-card{
+                        flex:0 0 calc(100% / 2 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                    }
+                }
+            }
+        }
+        .love-to-do{
+            padding: clamp(25px, 6.8%, 6.8%) 20px clamp(25px, 6.7%, 6.7%);
+            .img-container{
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+    }
+}
+
+@media screen and (max-width:600px){
+    .home-wrapper{
+        .hero-section{
+            .banner-img{
+                min-height: 350px;
+            }
+            .hero-content-container{
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+        .choose-us{
+            .choose-us-card-wrapper{
+               padding-inline: 0; 
+                .choose-us-card-container{
+                    gap: 25px;
+                    .choose-us-card{
+                        flex:0 0 calc(100% / 2 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                    }
+                }
             }
         }
         .love-to-do{
