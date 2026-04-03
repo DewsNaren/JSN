@@ -42,7 +42,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 18px;
+        gap: clamp(10px, $fs-18px, $fs-18px);
         margin: clamp(30px, $fs-70px, $fs-70px) auto 0;
 
         img {
@@ -386,6 +386,9 @@
 
 @media screen and (max-width:1024px){
     .home-wrapper{
+        .hero-section .hero-content-container button img {
+            width: 9px;
+        }
         .choose-us{
             .choose-us-card-wrapper{
                 padding-inline: 4%;
@@ -422,7 +425,7 @@
             }
             .btn-container .load-more-btn {
                 img{
-                    width: 9px;
+                    width: 8px;
                 }
             }
         } 
@@ -433,6 +436,12 @@
 @media screen and (max-width:768px){
     .home-wrapper{
         .hero-section{
+            .hero-content-container button{
+                img {
+                    width: 8px;
+                }
+                border-width: 1px;
+            } 
             .banner-img{
                 min-height: 350px;
             }
@@ -445,9 +454,9 @@
                 .choose-us-card-container{
                     width:100%;
                     justify-content: flex-start;
-                    gap: 35px;
+                    gap: 30px;
                     .choose-us-card{
-                        flex:0 0 calc(100% / 2 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                        flex:0 0 calc(100% / 2 - clamp(15px, $fs-52px, $fs-52px) * 1);
                     }
                 }
                 .arrow-btn{
