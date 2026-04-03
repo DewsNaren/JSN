@@ -1,5 +1,891 @@
-@use "../base/reset";
+@use "../base/reset" as *;
 @use "../abstracts/index" as *;
 @use "../layout/index" as *;
 
+.home-header.about-header .header-actions nav{
+  ul li .nav-link{
+    padding-inline: clamp(10px, $fs-29px, $fs-29px);
+    &::before{
+      left: 4px;
+      width: 88%;
+    }
+    &.active {
+      color: $orange-33;
+    }
+  }
+} 
+.about-wrapper {
+  .hero-section {
+    position: relative;
+    .banner-img{
+      width: 100%;
+    }
+    .hero-content-container {
+      position: absolute;
+      top: 72.8%;
+      left: 50%;
+      transform: translate(-50%, -72.8%);
+      text-align: center;
+      color: $white;
+      p {
+        font-size: clamp(13px, $fs-20px, $fs-20px);
+        font-weight: 300;
+        color: $white-80;
+        font-family: "Open Sans", sans-serif !important;
+        margin-bottom: 5px;
+        line-height: 1;
+      }
+      h2 {
+        font-size: clamp(24px, $fs-78px, $fs-78px);
+        font-weight: 900;
+        text-align: center;
+        line-height: 1;
+      }
+    }
+  }
+  .experience{
+    padding: clamp(35px, $fs-120px, $fs-120px);
+    .desc-1{
+      font-size: clamp(15px, $fs-36px, $fs-36px);
+      color: $grey-61;
+      width: 73%;
+      margin: 0 auto clamp(35px, $fs-100px, 100px);
+   
+      text-align: center;
+      line-height: 1.32;
+    }
+    .content-container{
+      display: flex;
+      gap: clamp(30px, $fs-138px, $fs-138px);
+      align-items: center;
+      padding-inline:clamp(35px, $fs-87px, 87px);
+      margin-bottom: clamp(35px, $fs-87px, 87px);
 
+      .img-wrapper{
+        position: relative;
+        
+        .img-bg{
+          position: absolute;
+          left: 18%;
+          top: 17%;
+          bottom: 0;
+          width: 50%;
+          z-index: -1;
+        }
+        .exp-img{
+          width: clamp(270px, $fs-576px, 575px);
+        }
+      }
+      .desc-wrapper{
+        h2{
+          font-size: clamp(22px, $fs-48px, $fs-48px);
+          font-weight: 900;
+          color: $black-90;
+          margin-bottom: clamp(20px, $fs-50px, $fs-50px);
+        }
+        .text{
+          font-size: clamp(14px, $fs-24px, $fs-24px);
+          color: $grey-c2;
+          width: 80%;
+        }
+      }
+
+    }
+    .count-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:  clamp(25px, $fs-100px, $fs-100px);
+      .count-container{
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+         gap:  clamp(15px, $fs-30px, $fs-30px);
+        .count{
+          font-size: clamp(28px, $fs-100px, $fs-100px);
+          font-weight: 900;
+          color: $black;
+          margin-bottom: 0;
+          span{
+            color: $orange-34;
+          }
+
+        }
+        .desc{
+         font-size: clamp(13px, $fs-24px, $fs-24px);
+         font-weight: 600;
+         color: $grey-61;
+         margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .accomplish{
+    padding: clamp(35px, $fs-120px, $fs-120px);
+    background-color: $white-fb;
+    .header-wrapper{
+      margin-bottom: clamp(35px, $fs-120px, $fs-120px);
+      h2{
+        text-align: center;
+        font-size: clamp(24px, $fs-48px, $fs-48px);
+        margin-bottom:clamp(25px, $fs-60px, $fs-60px) ;
+        color: $black-90;
+        span{
+          font-weight: 900;
+        }
+      }
+      .desc{
+        font-size: clamp(14px, $fs-24px, $fs-24px);
+        color: $grey-c2;
+        text-align: center;
+        width: 57%;
+        margin: 0 auto;
+
+      }
+    }
+    .img-gallery-wrapper{
+      display: flex;
+      gap: clamp(15px, $fs-40px, $fs-40px);
+      .gallery-container{
+        display: flex;
+        flex-direction: column;
+        gap: clamp(15px, $fs-40px, $fs-40px);
+        .gallery{
+          width: clamp(215px, $fs-530px, 530px);
+          overflow: hidden;
+          img{
+            width: 100%;
+            height: auto;
+            transition: transform 0.6s ease-in;
+          }
+          &:hover{
+            img{
+              transform: scale(1.07);
+            }
+          }
+        }
+      }
+    }
+  }
+  .core{
+
+    padding: clamp(35px, $fs-120px, $fs-120px);
+    .header-wrapper{
+      text-align: center;
+      margin-bottom:clamp(20px, $fs-60px, $fs-60px) ;
+      h2{
+        font-size:clamp(22px, $fs-48px, $fs-48px);
+        font-weight: 900;
+        margin-bottom:clamp(17px, $fs-40px, $fs-40px) ;
+      }
+      .desc{
+        font-size: clamp(14px, $fs-23px, $fs-23px);
+        color: $grey-c2;
+        width: 55%;
+        margin: 0 auto;
+      }
+    }
+    .core-card-wrapper{
+      padding-inline: clamp(35px, $fs-204px, $fs-204px);
+      display: flex;
+      .core-card{
+        padding:clamp(15px, $fs-30px, $fs-30px) clamp(20px, $fs-60px, $fs-60px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-right: 1px solid $grey-d3;
+        img{
+          margin-bottom: clamp(15px, $fs-34px, $fs-34px);
+        }
+        h3{
+          font-size: clamp(15px, $fs-29px, $fs-29px);
+          color: $black-90;
+          font-weight: 700;
+          margin-bottom: clamp(15px, $fs-34px, $fs-34px);
+        }
+        .text{
+          font-size: clamp(13px, $fs-18px, $fs-18px);
+          color: $grey-6c;
+          width: 78%;
+        }
+        &.card-1{
+          padding-left: 0;
+          img{
+            width: clamp(40px, $fs-94px, 94px);
+          }
+        }
+        &.card-2{
+          img{
+            width: clamp(34px, $fs-70px, 70px);
+          }
+
+        }
+        &.card-3{
+          padding-right: 0;
+          border-right: none;
+          img{
+            width: clamp(39px, $fs-91px, 91px);
+          }
+        }
+
+      }
+    }
+  }
+  .story{
+    padding:clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-320px, $fs-320px)
+    clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-245px, $fs-245px);
+    background-color: $white-fb;
+
+    display: flex;
+    .left-wrapper{
+      h2{
+        font-size:clamp(22px, $fs-48px, $fs-48px);
+        font-weight: 900;
+        color: $black;
+        margin-bottom:clamp(15px, $fs-30px, $fs-30px) ;
+      }
+      .text{
+        font-size: clamp(14px, $fs-24px, $fs-24px);
+        color: $grey-a4;
+        width: 60%;
+      }
+      
+    }
+    .time-wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: clamp(35px, $fs-120px, $fs-120px);
+      position: relative;
+      .time-container{
+        display: flex;   
+        .time{
+          padding-right: clamp(20px, $fs-42px, $fs-42px);
+          font-size: clamp(15px, $fs-24px, $fs-24px);
+          color: $blue-a4;
+          font-weight: 600;
+          &.time-1{
+            padding-top: clamp(15px, $fs-28px, $fs-28px);
+          }
+        }
+        .content-container{
+          padding-left: clamp(20px, $fs-42px, $fs-42px);
+          position: relative;
+          .circle{
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $blue-a4;
+            position: absolute;
+            left: -4px;
+            top: clamp(20px, $fs-42px, $fs-42px);
+          }
+          .desc{
+            font-size: clamp(14px, $fs-24px, $fs-24px);
+            color: $grey-6c;
+            width: 90%;
+          }
+
+          &.content-container-1{
+            padding-top: clamp(15px, $fs-28px, $fs-28px);
+          }
+        }
+        
+      }
+      &::before{
+        position: absolute;
+        content: '';
+        left: clamp(47px, $fs-96px, $fs-96px);
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: $grey-d3;
+      }
+    }
+    
+  }
+  .team{
+    padding:clamp(30px, $fs-130px, $fs-130px) clamp(20px, $fs-210px, $fs-210px);
+    // clamp(30px, $fs-115px, $fs-120px) clamp(20px, $fs-250px, $fs-245px);
+    .header-wrapper{
+      h2{
+       
+        font-size:clamp(23px, $fs-48px, $fs-48px);
+        font-weight: 900;
+        color: $black;
+        margin-bottom:clamp(18px, $fs-40px, $fs-40px) ;
+      
+        text-align: center;
+      }
+      .desc{
+        font-size: clamp(14px, $fs-24px, $fs-24px);
+        color: $grey-a4;
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+    .card-wrapper{
+      display: flex;
+      gap: clamp(30px, $fs-184px, $fs-184px);
+      margin-top: clamp(30px, $fs-100px, $fs-100px);
+      padding: 0 clamp(20px, $fs-50px, $fs-50px)  clamp(30px, $fs-110px, $fs-110px);
+
+      border-bottom: 1px solid $grey-d3;
+
+      .card{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: none;
+        .img-wrapper{
+          width: clamp(75px, $fs-154px, 154px);
+          height: clamp(75px, $fs-154px, 154px);
+          border-radius: 50%;
+          overflow: hidden;
+          margin-bottom: clamp(15px, $fs-30px, $fs-30px);
+          img{
+            width: 100%;
+          }
+        }
+        
+        h3{
+          font-size: clamp(15px, $fs-25px, $fs-25px);
+          color: $grey-5c;
+          font-weight: 500;
+          margin-bottom: clamp(10px, $fs-20px, $fs-20px);
+        }
+        .card-text{
+          font-size: clamp(13px, $fs-20px, $fs-20px);
+          color: $grey-90;
+        
+          // width: 80%;
+        }
+
+      }
+      
+    }
+    .client-wrapper{
+        padding: clamp(25px,7.4%, 7.4%) clamp(15px,3%, 3%) 0;
+
+        overflow: hidden;
+        .client-container{
+            display: flex;
+            gap: clamp(20px, $fs-40px, $fs-40px);
+            .img-container{
+                flex:  0 0 25%;
+                img{
+                    width: clamp(110px, $fs-225px, $fs-225px);
+                    display: block;
+                }
+            }
+           
+        }
+    }
+  }
+}
+
+footer.about-footer .footer-content-wrapper{
+  padding-top: clamp(20px, 5%, 5%);
+}
+
+
+//responsive
+
+@media screen and (max-width:1400px){
+  .about-wrapper{
+   
+    .story{
+      padding:clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-295px, $fs-295px)
+      clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-245px, $fs-245px);
+    }
+    .core .core-card-wrapper {
+      padding-inline:  clamp(35px, $fs-160px, $fs-160px);
+    }
+  } 
+}
+
+@media screen and (max-width:1280px){
+  .about-wrapper{
+ 
+    .story{
+      padding:clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-295px, $fs-295px)
+      clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-245px, $fs-245px);
+    }
+    .core .core-card-wrapper {
+      padding-inline:  clamp(35px, $fs-128px, $fs-128px);
+    }
+  } 
+}
+
+@media screen and (max-width:1200px){
+  .about-wrapper{
+ 
+    .story{
+      padding:clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-225px, $fs-225px)
+      clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-225px, $fs-225px);
+
+      .time-wrapper .time-container .content-container .circle {
+        width: 7px;
+        height: 7px;
+      }
+    }
+     .accomplish .header-wrapper .desc {
+      width: 62%;
+     }
+    .core{
+      padding-inline: clamp(35px, $fs-100px, $fs-100px);
+      .core-card-wrapper {
+        padding-inline:  clamp(20px, $fs-65px, $fs-65px);
+       .core-card{
+        padding:clamp(15px, $fs-30px, $fs-30px) clamp(20px, $fs-50px, $fs-50px);
+       }
+      }
+    } 
+    .team{
+      padding:clamp(30px, $fs-130px, $fs-130px) clamp(20px, $fs-174px, $fs-174px);
+    }
+  } 
+}
+
+
+
+@media screen and (max-width:1100px){
+  .about-wrapper{
+    .story .time-wrapper .time-container .content-container .circle {
+      width: 7px;
+      height: 7px;
+      left: -7px;
+    }
+  }
+}
+
+
+@media screen and (max-width:1024px){
+  .home-header .header-actions nav {
+    padding-right: 5px;
+  }
+  .about-wrapper{
+    .experience .content-container{
+      padding-inline:clamp(20px, $fs-50px, 87px);
+      .desc-wrapper .text{
+        width: 95%;
+      }
+    } 
+    .accomplish .header-wrapper .desc {
+      width: 70.9%;
+    }
+
+    .core{
+      padding-inline: clamp(35px, $fs-90px, $fs-90px);
+      .core-card-wrapper {
+        padding-inline:  clamp(20px, $fs-50px, $fs-50px);
+       .core-card{
+        padding:clamp(15px, $fs-30px, $fs-30px) clamp(20px, $fs-50px, $fs-50px);
+        .text{
+          width: 100%;
+        }
+       }
+      }
+    }
+    .story{
+      padding:clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-130px, $fs-130px)
+      clamp(30px, $fs-120px, $fs-120px) clamp(20px, $fs-130px, $fs-130px);
+      .left-wrapper .text {
+        width: 75%;
+      }
+     .time-wrapper .time-container .content-container .circle {
+        width: 7px;
+        height: 7px;
+        left: -9px;
+      }
+    }
+    .team{
+      padding:clamp(30px, $fs-130px, $fs-130px) clamp(20px, $fs-160px, $fs-160px);
+    }
+  } 
+}
+
+@media screen and (max-width:992px){
+  .about-wrapper{
+    .story .time-wrapper .time-container .content-container .circle {
+      width: 7px;
+      height: 7px;
+      left: -10px;
+    }
+    .accomplish{
+      padding-inline:clamp(35px, $fs-115px, $fs-115px);
+    }
+    .experience {
+      padding-inline: clamp(35px, $fs-100px, $fs-100px);
+      .desc-1{
+        width: 80%;
+      }
+      .count-wrapper .count-container .desc {
+        font-size: clamp(13px, 1.25vw, 1.25vw);
+      }
+    }
+
+    .core{
+      .core-card-wrapper {
+        padding-inline:  clamp(15px, $fs-40px, $fs-40px);
+       .core-card .text{
+          width: 100%;
+        }
+      }
+    }
+    .team{
+      padding:clamp(30px, $fs-130px, $fs-130px) clamp(20px, $fs-120px, $fs-120px);
+      .card-wrapper{
+        padding-inline: clamp(15px, $fs-50px, $fs-50px);
+        gap: clamp(20px, $fs-72px, $fs-72px);
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:768px){
+  .about-wrapper{
+    .hero-section{
+      .banner-img{
+        height: 220px;
+        object-fit: cover;
+      }
+        .hero-content-container{
+            h2{
+              font-size: clamp(24px, $fs-60px, $fs-60px);
+              margin-bottom: 0;
+            }
+            p{
+              font-size: clamp(14px, $fs-24px, $fs-24px);
+              margin-bottom: 12px;
+            }
+        }
+    }
+    .experience {
+      padding-inline: clamp(35px, $fs-100px, $fs-100px);
+      .desc-1{
+        width: 100%;
+      }
+      .content-container{
+        flex-direction: column;
+        align-items: flex-start;
+        
+        padding-inline: 0;
+        .img-wrapper .exp-img {
+          width: clamp(280px, $fs-750px, $fs-750px);
+        }
+
+        .desc-wrapper{
+          h2{
+            font-size: 24px;
+          }
+          .text{
+          font-size: 15px;
+          width: 100%;
+        }
+        } 
+      }
+      .count-wrapper{
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .count-container{
+          flex: 0 0 45%;
+          .desc br{
+            display: none;
+          }
+        }
+      } 
+    }
+    .accomplish{
+      padding-inline:clamp(35px, $fs-115px, $fs-115px);
+      .header-wrapper{
+        h2{
+          font-size: 25px;
+          br{
+            display: none;
+          }
+        } 
+        .desc{
+          width: 100%;
+        }
+      }
+      .img-gallery-wrapper{
+        flex-direction: column;
+        gap: 30px;
+        .gallery-container-1,.gallery-container-3{
+          flex-direction: row;
+          justify-content: center;
+          gap: 25px;
+          .gallery{
+            width: 50%;
+          }
+        }
+        .gallery-container-2{
+          align-items: center;
+          .gallery{
+            width: fit-content;
+            aspect-ratio: 1/1;
+            height: fit-content;
+          }
+          img{
+            display: block;
+            object-fit: none;
+          }
+
+        }
+      }
+    }
+
+
+    .core{
+      .header-wrapper{
+        h2{
+          font-size: 23px;
+        }
+        .desc{
+          width: 100%;
+        }
+      }
+      .core-card-wrapper {
+        flex-direction: column;
+        padding-inline:  clamp(15px, $fs-40px, $fs-40px);
+        
+       .core-card {
+          border: none;
+
+          h3{
+            font-size: 18px;
+          }
+          .text{
+            font-size: 14px;
+          }
+          &.card-1{
+            padding-left: 15px;
+          }
+          &.card-3{
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+    .story{
+      flex-direction: column;
+      gap: 40px;
+      .left-wrapper{
+        h2{
+          font-size: 24px;
+          text-align: center;
+          line-height: 1.3;
+          br{
+            display: none;
+          }
+        }
+        .text{
+          width: 100%;
+        }
+      }
+      .time-wrapper{
+        .time-container .content-container{
+          .desc{
+            width: 100%;
+          }
+          .circle {
+            width: 7px;
+            height: 7px;
+            left: -3px;
+          }
+        } 
+        &::before{
+          left: 55px;
+        }
+      } 
+    } 
+    .team{
+      padding:clamp(30px, $fs-130px, $fs-130px) clamp(20px, $fs-80px, $fs-80px);
+      .card-wrapper{
+        padding-inline: 0;
+        gap: clamp(25px, $fs-72px, $fs-72px);
+        row-gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .card{
+          flex: 0 0 calc(48% - clamp(25px, $fs-72px, $fs-72px) / 2);
+          padding: 20px 10px;
+          .img-wrapper{
+            width: 80px;
+            height: 80px;
+          }
+          .card-text{
+            width: 85%;
+          }
+          &:last-of-type{
+           width: 100%;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media screen and (max-width:600px){
+  .about-wrapper{
+    .experience .count-wrapper{
+      flex-direction: column;
+      .count-container{
+        width: 250px;
+        .count{
+          width: 84px;
+        }
+      }
+    }
+    .team{
+      .card-wrapper .card{
+          flex: 0 0 100%;
+          .img-wrapper{
+            width: 90px;
+            height: 90px;
+          }
+
+          h3{
+            font-size: 16px;
+          }
+          .card-text{
+            width: 90%;
+            font-size: 14px;
+          }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:480px){
+  .about-wrapper{
+    .experience{
+      padding-inline: 20px;
+      .content-container .desc-wrapper h2{
+        font-size: 23px;
+      }
+      .desc-1{
+        font-size: 14px;
+      }
+      .content-container .desc-wrapper .text {
+        font-size: 14px;
+      }
+    } 
+    .accomplish{
+      padding-inline: 20px;
+      .header-wrapper{
+        h2{
+          font-size: 22px;
+        }
+        .desc{
+          font-size: 14px;
+        }
+      }
+      .img-gallery-wrapper{
+        gap: 20px;
+        .gallery-container-1,.gallery-container-3{
+          gap: 20px;
+          flex-direction: column;
+          .gallery{
+            width: 100%;
+          }
+        }
+         
+      }
+    } 
+    .core{
+      padding: 30px 20px;
+      .header-wrapper h2{
+        font-size: 22px;
+      }
+        
+      .core-card-wrapper .core-card {
+        padding-inline: 0; 
+        &.card-1{
+          padding-left: 0;
+        }
+        &.card-3{
+          padding-right: 0;
+        }
+
+      }
+    }
+    .story{
+      padding-inline: 20px;
+      .left-wrapper h2{
+        font-size: 23px;
+      }
+    
+    } 
+   
+    .team{
+      .header-wrapper .desc{
+        width: 100%;
+      }
+      .card-wrapper{
+        gap: 20px;
+        .card{
+          flex: 0 0 100%;
+          .img-wrapper{
+            width: 90px;
+            height: 90px;
+          }
+
+          h3{
+            font-size: 16px;
+          }
+          .card-text{
+            width: 90%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:390px){
+  .about-wrapper{
+    .experience{
+      .content-container .desc-wrapper h2{
+        font-size: 22px;
+      }
+      .count-wrapper .count-container {
+        width: 240px;
+      }
+    } 
+
+    .core{
+      .core-card-wrapper{
+        padding-inline: 0;
+      } 
+    }
+    .story{
+      .left-wrapper h2{
+        font-size: 22px;
+      }
+      .time-wrapper .time-container{
+        .content-container .circle{
+          left: -1px;
+        } 
+        .time{
+          padding-right: 18px;
+        }
+    }
+        
+    } 
+   
+    .team{
+      .card-wrapper .card{
+        padding-inline: 0;
+      }
+    } 
+  }
+}

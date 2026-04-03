@@ -21,30 +21,54 @@ footer{
             font-weight: 500;
         }
     }
-    .social-card-container{
-        position: absolute;
-        top: 10.5%;
-        left: 0;
-        right: 0;
-        padding-inline: clamp(25px,6%, 6%);
-        margin-bottom: 10%;
-        display: flex;
-        justify-content: center;
-        margin-top: clamp(20px, 9.5%, 9.5%) ;
-        .social-card{
-            width: clamp(150px, $fs-320px, 320px);
-            height: clamp(150px, $fs-320px, 320px);
-            overflow: hidden;
-            img{
-                width: 100%;
-                height: 100%;
-                transition: all 0.5s ease-in;
+    .social-card-wrapper{
+        .social-card-container{
+            position: absolute;
+            top: 10.5%;
+            left: 0;
+            right: 0;
+            padding-inline: clamp(25px,6%, 6%);
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+            margin-top: clamp(20px, 9.5%, 9.5%) ;
+            .social-card{
+                width: clamp(100px, $fs-320px, 320px);
+                height: clamp(100px, $fs-320px, 320px);
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    transition: all 0.5s ease-in;
+                }
+                &:hover img{
+                    transform: scale(1.1);
+                }
             }
-            &:hover img{
-                transform: scale(1.1);
+        }
+        .social-indicator-container{
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            justify-content: center;
+            button{
+                border: none;
+                background-color: transparent;
+                gap: 30px;
+                box-shadow: $box-shadow-1;
+                border-radius: 50%;
+                width: 34px;
+                height: 34px;
+                &:hover{
+                    background-color: $black-80;
+                    img{
+                        filter: invert(1);
+                    }
+                }
             }
         }
     }
+    
    
     .footer-content-wrapper{
         padding: clamp(20px, 16%, 16%) clamp(25px,8.4%, 8.4%) clamp(20px, 5.5%, 5.5%);
@@ -82,7 +106,7 @@ footer{
                         li{
                             a{
                                 display: block;
-                                width: clamp(22px, $fs-35px, 34px);
+                                width: clamp(26px, $fs-35px, 34px);
                                 img{
                                     width: 100%;
                                     height: 100%;
@@ -240,11 +264,12 @@ footer{
 
 @media screen and (max-width:1024px){
     footer{
+        .social-card-wrapper
         .social-card-container{
             top: 10%;
         }
         .footer-content-wrapper{
-            padding: clamp(170px, 16%, 16%) clamp(25px, 5%, 5%) clamp(20px, 5.5%, 5.5%);
+            padding: clamp(170px, 16%, 16%) clamp(20px, 5%, 5%) clamp(20px, 5.5%, 5.5%);
             .footer-content-container{
                 gap:  clamp(25px, $fs-80px, $fs-80px);
             }
@@ -277,14 +302,33 @@ footer{
 @media screen and (max-width:768px){
     footer{
         .social-header-container{
-            padding-bottom: 90px;
+            padding-bottom: clamp(25px, 6.7%, 6.7%);
         }
-        .social-card-container{
-            top: 70px;
+        .social-card-wrapper{
+            padding: clamp(25px, 5.5%, 5.5%) clamp(20px, 6%, 6%) clamp(30px, 5.5%, 5.5%);
+            .social-card-container{
+                padding-inline: 0;
+                top:unset;
+                left: unset;
+                right: unset;
+                position: relative;
+                width: 100%;
+                gap: 30px;
+                justify-content: flex-start;
+                margin: 20px 0 35px;
 
+                // flex-wrap: wrap;
+                overflow: hidden;
+                .social-card{
+                    flex: 0 0 auto;
+                    width: calc(50% - 15px);
+                    height: auto;
+                }
+
+            }
         }
         .footer-content-wrapper{
-            padding-top: 140px;
+            padding-top: 0px;
             .footer-content-container{
             .about,.contact{
                 padding-left: 2%;
@@ -294,4 +338,154 @@ footer{
         }
     } 
    
+}
+
+@media screen and (max-width:600px){
+    footer .footer-content-wrapper .footer-content-container{
+        .footer-content {
+            width: 100%;
+            font-size: 14px;
+
+            .desc-2{
+                font-size: 14px;
+            }
+
+            .social-link-container ul li a{
+                width: 28px;
+            }
+            
+        }
+        .about{
+            width: 40%;
+            padding-left: 0;
+            margin: 0;
+            h3{
+                font-size: 16px;
+            }
+
+            ul li a{
+                font-size: 14px;
+            }
+        }
+        .our-services{
+            width: 40%;
+             h3{
+                font-size: 16px;
+            }
+            ul li a{
+                font-size: 14px;
+            }
+        }
+        .contact{
+            margin: 0;
+            width: 100%;
+            padding-left: 0;
+             h3{
+                font-size: 16px;
+            }
+            .city{
+                font-size: 15px;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
+    } 
+}
+
+@media screen and (max-width:480px){
+    footer{
+         .social-card-wrapper .social-card-container{
+            width: 80%;
+            margin: 10px auto 20px;
+            .social-card {
+                width:100%;
+            }
+         } 
+        .footer-content-wrapper .footer-content-container{
+            flex-direction: column;
+            .footer-content{
+                font-size: 13px;
+                .desc-2{
+                    font-size: 13px;
+                }
+            }
+            .about{
+                width: 100%;
+                h3{
+                    font-size: 15px;
+                }
+
+                ul li a{
+                    font-size: 13px;
+                }
+            }
+            .our-services{
+                width: 100%;
+                h3{
+                    font-size: 15px;
+                }
+
+                ul li a{
+                    font-size: 13px;
+                }
+            }
+           .contact{
+
+             h3{
+                font-size: 15px;
+            }
+            .city{
+                font-size: 14px;
+            }
+            p{
+                font-size: 13px;
+            }
+        }
+        }
+        .copyright-container{
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding-inline: 20px;
+        }
+        .chat-btn-container{
+            bottom: 40px;
+            right: 20px;
+        }
+         
+    }
+}
+
+@media screen and (max-width:390px){
+    footer{
+        .social-card-wrapper{
+            .social-card-container{
+                width: 100%;
+            }
+            .social-indicator-container{
+                gap: 25px;
+                button{
+                    gap: 25px;
+                    width: 30px;
+                    height: 30px;
+                    img{
+                        width: 22px;
+                    }
+                }
+            }
+        } 
+        .chat-btn-container{
+            bottom: 45px;
+            right: 15px;
+            .chat-btn{
+                width: 46px;
+                height: 46px;
+                img{
+                    width: 23px;
+                    height: 23px;
+                }
+            } 
+        }
+    }
 }

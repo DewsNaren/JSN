@@ -5,6 +5,9 @@
 .home-wrapper {
   .hero-section {
     position: relative;
+    .banner-img{
+        width: 100%;
+    }
     .hero-content-container {
       position: absolute;
       top: 56%;
@@ -24,10 +27,10 @@
         }
       }
       h2 {
-        font-family: "Lato", sans-serif !important;
         font-size: clamp(24px, $fs-78px, $fs-78px);
         font-weight: 900;
         text-align: center;
+        margin-bottom: 0;
       }
       button {
         background-color: $black-30;
@@ -60,7 +63,6 @@
     background-color: $white-f8;
     padding: clamp(25px,7.3%, 7.3%) 20px clamp(25px,6.8%, 6.8%);
     h2{
-        font-family: "Lato", sans-serif !important;
         font-size: clamp(24px, $fs-48px, $fs-48px);
         font-weight: 900;
         text-align: center;
@@ -68,7 +70,6 @@
     .choose-us-desc{
         font-size: clamp(13px, $fs-23px, $fs-23px);
         color: $grey-c2;
-        font-family: "Lato", sans-serif !important;
         font-weight: 500;
         text-align: center;
         margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(25px, $fs-75px, $fs-75px);
@@ -225,7 +226,6 @@
   .love-to-do{
     padding: clamp(25px,6.8%, 6.8%) clamp(20px,10.3%, 10.3%) clamp(25px,6.7%, 6.7%);
     h2{
-        font-family: "Lato", sans-serif !important;
         font-size: clamp(24px, $fs-48px, $fs-48px);
         font-weight: 900;
         text-align: center;
@@ -233,7 +233,6 @@
     &-desc{
         font-size: clamp(13px, $fs-23px, $fs-23px);
         color: $grey-c2;
-        font-family: "Lato", sans-serif !important;
         font-weight: 500;
         text-align: center;
         margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(25px, $fs-80px, $fs-80px);
@@ -290,7 +289,6 @@
     background: url("../images/home/grow_your_business.jpg");
     padding: clamp(25px,6.3%, 6.3%) clamp(20px,10.3%, 10.3%) clamp(25px,7.4%, 7.4%);
     h2{
-        font-family: "Lato", sans-serif !important;
         font-size: clamp(24px, $fs-48px, $fs-48px);
         font-weight: 900;
         text-align: center;
@@ -300,10 +298,9 @@
     &-desc{
         font-size: clamp(13px, $fs-23px, $fs-23px);
         color: $white-80;
-        font-family: "Lato", sans-serif !important;
         font-weight: 500;
         text-align: center;
-        margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(25px, $fs-145px, $fs-145px);
+        margin: clamp(15px, $fs-20px, $fs-20px) auto clamp(40px, $fs-145px, $fs-145px);
     }
     .detail-wrapper{
         display: flex;
@@ -332,7 +329,7 @@
                     font-style: italic;
                     color: $white;
                     font-weight: 600;
-                    font-family: "Lato", sans-serif !important;
+        
                     line-height: 1;
                     margin-bottom: 0;
                     sup{
@@ -346,7 +343,7 @@
                 .text{
                     font-size: clamp(14px, $fs-23px, $fs-23px);
                     color: $white-80;
-                    font-family: "Lato", sans-serif !important;
+        
                     margin-top: clamp(10px, $fs-20px, $fs-20px);
                 }
             }
@@ -467,19 +464,42 @@
 
             }  
         }
+        .help-you{
+            padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 7%, 7%) clamp(25px, 7.4%, 7.4%);
+        }
+       
     }
 }
 
 @media screen and (max-width:600px){
     .home-wrapper{
         .hero-section{
+
             .banner-img{
                 min-height: 350px;
             }
+            .hero-content-container {
+                left: 0%;
+                transform: translate(0%, -56%);
+                margin: 0 auto;
+                width: 100%;
+            }
         }
         .choose-us{
+            .choose-us-img-container{
+                gap: clamp(25px, $fs-35px, $fs-35px);
+                .ic-img1,
+                .ic-img2,
+                .ic-img3,
+                .ic-img4{
+                    width: 50px;
+                }
+            } 
             .choose-us-card-wrapper{
                padding-inline: 0; 
+               .choose-us-card-container {
+                gap: 30px;
+               }
             }
         }
         .love-to-do{
@@ -488,5 +508,84 @@
                 grid-template-columns: repeat(3,1fr);
             }
         }
+         .help-you{
+            padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 6%, 6%) clamp(25px, 7.4%, 7.4%);
+        }
+        .people-say{
+            padding: clamp(25px, 6.3%, 6.3%) 20px clamp(25px, 7.4%, 7.4%);
+        }
+    }
+    
+}
+
+@media screen and (max-width:480px){
+    .home-wrapper{
+        .hero-section .banner-img {
+            min-height: 320px;
+        }
+        .choose-us{
+             .choose-us-img-container{
+                gap: clamp(21px, $fs-35px, $fs-35px);
+                flex-wrap: wrap;
+                .plus{
+                    width: 18px;
+                    height: 18px;
+                }
+                .ic-img1,
+                .ic-img2,
+                .ic-img3,
+                .ic-img4{
+                    width: 42px;
+                }
+            } 
+            .choose-us-card-wrapper 
+            .choose-us-card-container 
+            .choose-us-card{
+                flex: 0 0 100%;
+            }
+        }
+        .love-to-do .img-container {
+            grid-template-columns: repeat(2,1fr);
+
+        }
+         .help-you{
+            padding: clamp(25px, 6.3%, 6.3%) 20px clamp(25px, 7.4%, 7.4%);
+        }
+
+    } 
+
+}
+
+@media screen and (max-width:390px){
+    .home-wrapper{
+        .hero-section .hero-content-container{
+            p{
+                font-size: 13px;
+            }
+            button {
+                border-width: 1px;
+            }
+        } 
+        .love-to-do .img-container {
+            grid-template-columns: 1fr;
+        }
+        .help-you .detail-wrapper{
+            flex-direction: column;
+            align-items: center;
+        }
+        .choose-us .choose-us-img-container{
+            gap: 14px;
+            .ic-img1,
+            .ic-img2,
+            .ic-img3, 
+            .ic-img4 {
+                width: 37px;
+            }
+            .plus{
+                width: 15px;
+                height: 15px;
+            }
+
+        } 
     }
 }
