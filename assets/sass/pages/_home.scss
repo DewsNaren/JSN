@@ -51,9 +51,9 @@
         &:hover {
           background-color: $black;
           color: $white-80;
-          border: 2px solid $orange-47;
+          border-color: $white-80;
           img {
-            filter: invert(1) sepia(1) hue-rotate(10deg) brightness(1.2);
+            filter: invert(0.5);
           }
         }
       }

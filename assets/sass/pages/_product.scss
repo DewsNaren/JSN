@@ -177,7 +177,7 @@
     }
   }
   .screenshot{
-    padding: clamp(30px, 6.25%, 6.25%) clamp(30px, 5.21%, 5.21%) clamp(30px, 6.78%, 6.78%);
+    padding: clamp(30px, 6.25%, 6.25%) clamp(20px, 5.21%, 5.21%) clamp(30px, 6.78%, 6.78%);
     .header-wrapper {
       text-align: center;
       margin-bottom: clamp(30px, $fs-60px, $fs-60px);
@@ -322,7 +322,7 @@
         text-align: center;
         .try-btn{
           margin: clamp(30px, $fs-110px, $fs-110px) auto 0;
-          font-size: clamp(14px, $fs-20px, $fs-20px);
+          font-size: clamp(15px, $fs-20px, $fs-20px);
           background-color: transparent;
           border: 2px solid $orange-37;
           color: $orange-37;
@@ -330,7 +330,7 @@
           display: inline-flex;
           align-items: center;
           gap: 15px;
-          padding: clamp(10px, $fs-17px, $fs-17px) clamp(20px, $fs-25px, $fs-25px);
+          padding: clamp(12px, $fs-17px, $fs-17px) clamp(20px, $fs-25px, $fs-25px);
           cursor: pointer;
 
           img{
@@ -364,7 +364,7 @@
         font-size: clamp(24px, $fs-48px, $fs-48px);
         font-weight: 900;
         line-height: 1;
-        margin-bottom: clamp(15px, $fs-25px, $fs-25px);
+        margin-bottom: clamp(18px, $fs-25px, $fs-25px);
       }
       p {
        font-size: clamp(14px, $fs-24px, $fs-24px);
@@ -547,18 +547,18 @@ footer.product-footer .footer-content-wrapper{
       width: 80%;
     }
     .feature{
+        padding: clamp(30px, 4.69%, 4.69%) clamp(20px, 5%, 5%) clamp(30px, 6.78%, 6.78%);
       .header-wrapper p{
         width: 80%;
       }
       .card-wrapper .card {
         padding-inline:clamp(15px, $fs-50px, $fs-50px) ;
+       
       }
     } 
-    .feature .card-wrapper .card .text {
-      width: 95%;
-    }
+    
     .screenshot{
-      padding-inline: clamp(30px, 5%, 5%);
+      padding-inline: clamp(20px, 5%, 5%);
       .header-wrapper p{
         width: 80%;
       }
@@ -567,6 +567,29 @@ footer.product-footer .footer-content-wrapper{
 
         .slider-inner-wrapper .slider-outer-container {
           width: 83%;
+          .slider-inner-container{
+            .slider{
+              .img-wrapper{
+                width: 100%;
+               img{
+                &.screenshot3-img{
+                  width: 301px;
+                }
+                &.screenshot2-img{
+                  width: 302px;
+                }
+               }
+              }
+              &.active{
+                .img-wrapper{
+                  width: 100%;
+                  img{
+                    width: 360px;
+                  }
+                }
+              } 
+            }
+          }
         }
         .try-btn-container .try-btn img{
           width: 8px;
@@ -602,16 +625,272 @@ footer.product-footer .footer-content-wrapper{
 }
 
 @media screen and (max-width:768px){
-  .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-indicator-container{
-    position: relative;
-    top: unset;
-    transform: unset;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 25px;
-    button{
-      position: relative;
+  .product-wrapper{
+    .hero-section{
+      .banner-img{
+        height: 220px;
+        object-fit: cover;
+      }
+      .hero-content-container{
+        h2{
+          font-size: clamp(24px, $fs-60px, $fs-60px);
+          margin-bottom: 0;
+        }
+        p{
+          font-size: clamp(14px, $fs-24px, $fs-24px);
+          margin-bottom: 12px;
+        }
+      }
     }
-  }
+    .intro{
+      .header-wrapper p {
+        width: 100%;
+      }
+      .content-wrapper .prod-img-wrapper{
+        width: 70%;
+      }
+    } 
+    .feature{
+      .header-wrapper p{
+        width: 100%;
+      }
+      .card-wrapper {
+        grid-template-columns: repeat(2,1fr);
+        .card{
+          &.card-2,&.card-4{
+            border-right: 1px solid $blue-ad;
+          }
+          &.card-3{
+            border-right: none;
+          }
+           &.card-4{
+            border-bottom: none;
+          }
+        }
+      }
+    } 
+    .screenshot{
+      .header-wrapper p{
+        width: 100%;
+      }
+      .slider-outer-wrapper{
+        .try-btn-container .try-btn {
+          border-width: 1px;
+        }
+        .slider-inner-wrapper{
+          .slider-indicator-container{
+            position: relative;
+            top: unset;
+            transform: unset;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            button{
+              position: relative;
+            }
+          }
+          .slider-outer-container{
+            width: 88.6%;
+            .slider-inner-container{
+              .slider{
+                flex: 0 0 100%;
+                width: 100%;
+                .img-wrapper{
+                  width: 100%;
+                  img{
+                    &.screenshot3-img{
+                      width: 100%;
+                    }
+                    &.screenshot2-img{
+                      width: 100%;
+                    }
+                  }
+                }
+                &.active{
+                  width: 100%;
+                  .img-wrapper{
+                    width: 100%;
+                    img{
+                      width: 100%;
+                    }
+                  }
+                } 
+              }
+            }
+          } 
+        }
+      }
+    }
+    .question{
+
+      padding-inline: clamp(20px, 5%, 5%);
+      .header-wrapper p{
+        width: 85%;
+      }
+      .content-container{
+        flex-direction: column;
+        .demo-container,.contact-container{
+          aspect-ratio: 16 / 9;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .desc{
+            font-size: 15px;
+            
+          }
+        }
+      }
+    }
+    
+  } 
+  
+}
+
+@media screen and (max-width:600px){
+  .product-wrapper{
+    .intro{
+      padding-inline: clamp(20px, 5%, 5%);
+      .content-wrapper .prod-img-wrapper{
+        width: 90%;
+      }
+    } 
+    .feature{
+      
+      .card-wrapper {
+        grid-template-columns: repeat(1,1fr);
+        .card{
+          h3{
+            font-size: 17px;
+          }
+          .text{
+            font-size: 14px;
+          }
+          &.card-1,&.card-3,&.card-5{
+            border-right: 1px solid $blue-ad;
+          }
+           &.card-5{
+            border-bottom: none;
+          }
+        }
+      }
+    } 
+    .screenshot{
+      .slider-outer-wrapper{
+        .try-btn-container .try-btn {
+          border-width: 1px;
+        }
+        .slider-inner-wrapper .slider-outer-container{
+          width: 100%;
+          
+        }
+      }
+    }
+    .question{
+       .header-wrapper p{
+        width: 100%;
+      }
+      .content-container{
+        .demo-container,.contact-container{
+          .desc{
+            font-size: 15px;
+            width: 80%;
+          }
+        }
+      }
+    }
+    
+  } 
+  
+}
+
+@media screen and (max-width:480px){
+  .product-wrapper{
+    .intro{
+      padding-inline: 20px;
+      .header-wrapper h2{
+        font-size: 23px;
+      }
+      .content-wrapper .prod-img-wrapper{
+        width: 100%;
+      }
+    } 
+    .feature{
+      padding-inline: 20px;
+      .header-wrapper h2{
+        font-size:23px;
+      }
+    } 
+    .screenshot{
+      padding-inline: 20px;
+      .header-wrapper h2{
+        font-size: 23px;
+      }
+    }
+    .question{
+      padding-inline: 20px;
+       .header-wrapper h2{
+        font-size: 23px;
+      }
+      .content-container{
+        .demo-container,.contact-container{
+          padding-inline: 30px;
+          .desc{
+            
+            font-size: 15px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  
+  } 
+  
+}
+
+@media screen and (max-width:390px){
+  .product-wrapper{
+    .intro{
+      .header-wrapper h2{
+        font-size: 22px;
+      }
+      .content-wrapper .download-container .btn-container {
+        gap: 20px;
+      }
+    } 
+    .feature{
+      .header-wrapper h2{
+        font-size:22px;
+        line-height: 1.2;
+      }
+    } 
+    .screenshot{
+      .header-wrapper h2{
+        font-size: 22px;
+      }
+    }
+    .question{
+      .header-wrapper h2{
+        font-size: 22px;
+        line-height: 1.2;
+      }
+      .content-container{
+        border-radius: 10px;
+        .demo-container,.contact-container{
+          padding:30px 15px;
+          .demo-btn-container .demo-btn{
+            width: 168px;
+          }
+        
+          .contact-btn-container .contact-btn{
+            width: 168px;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  
+  } 
+  
 }

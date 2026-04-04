@@ -37,20 +37,20 @@
                     display: flex;
                     gap: clamp(15px, $fs-25px, $fs-25px);
                     .img-wrapper{
-                        width: clamp(42px, $fs-90px, $fs-90px);
-                        height: clamp(42px, $fs-90px, $fs-90px);
+                        width: clamp(50px, $fs-90px, $fs-90px);
+                        height: clamp(50px, $fs-90px, $fs-90px);
                         border-radius: 50%;
                         background-color: $grey-e9;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         img{
-                            width: clamp(40px, $fs-75px, 75px);
+                            width: clamp(48px, $fs-75px, 75px);
                         }
                     }
                     .name{
                         font-family: "Lato", sans-serif !important;
-                        font-size: clamp(14px, $fs-25px, $fs-25px);
+                        font-size: clamp(15px, $fs-25px, $fs-25px);
                         font-weight: 700;
                         color: $blue-7d;
                         margin-bottom: 8px;
@@ -58,7 +58,7 @@
                     }
                     .role{
                         font-family: "Lato", sans-serif !important;
-                        font-size: clamp(12px, $fs-20px, $fs-20px);
+                        font-size: clamp(13px, $fs-20px, $fs-20px);
                         font-weight: 500;
                         color: $blue-d1;
                         line-height: 1;
@@ -76,7 +76,7 @@
                 .testimonial-card-body{
                     .desc-1{
                         font-family: "Lato", sans-serif !important;
-                        font-size: clamp(13px, $fs-20px, $fs-20px);
+                        font-size: clamp(14px, $fs-20px, $fs-20px);
                         color: $black-60;
                         margin-bottom: 10px;
                         line-height: 1.8;
@@ -179,8 +179,9 @@
 }
 @media screen and (max-width:768px){
     .people-say{
+        padding-inline: clamp(20px,5.21%, 5.21%);
         .people-say-desc{
-            width: 70%;
+            width: 79%;
         }
         .testimonial-slider-wrapper .testimonial-slider-container{
             padding: 1px;
@@ -191,7 +192,7 @@
                     left: 2px;
                     width: 4px;
                     top: 20px;
-                    height: 80px;
+                    height: 70px;
                 }
             }
         } 
@@ -199,20 +200,38 @@
 }
 
 @media screen and (max-width:600px){
-    .people-say .people-say-desc{
-        width: 100%;
+    .people-say{
+        padding-inline: clamp(20px,5%, 5%);
+        .people-say-desc{
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width:480px){
+    .people-say{
+        padding-inline: 20px;
+
+        h2{
+            font-size: 23px;
+        }
     }
 }
 
 @media screen and (max-width:390px){
-    .people-say .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
-        padding: 20px 15px;
-        .testimonial-card-body .desc-1{
-            line-height: 1.65;
+    .people-say{
+        h2{
+            font-size: 22px;
         }
-        &::before{
-            height: 70px;
-            
+        .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+            padding: 20px 15px;
+            padding-right: 0;
+            .testimonial-card-body .desc-1{
+                line-height: 1.65;
+            }
+            &::before{
+                height: 70px;
+                
+            }
         }
     }
 }
