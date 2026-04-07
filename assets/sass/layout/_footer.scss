@@ -23,26 +23,28 @@ footer{
     }
     .social-card-wrapper{
         .social-card-container{
-            position: absolute;
-            top: 10.5%;
-            left: 0;
-            right: 0;
-            padding-inline: clamp(25px,6%, 6%);
-            margin-bottom: 10%;
-            display: flex;
-            justify-content: center;
-            margin-top: clamp(20px, 9.5%, 9.5%) ;
-            .social-card{
-                width: clamp(100px, $fs-320px, 320px);
-                height: clamp(100px, $fs-320px, 320px);
-                overflow: hidden;
-                img{
-                    width: 100%;
-                    height: 100%;
-                    transition: all 0.5s ease-in;
-                }
-                &:hover img{
-                    transform: scale(1.1);
+            .social-card-inner-container{
+                position: absolute;
+                top: 10.5%;
+                left: 0;
+                right: 0;
+                padding-inline: clamp(25px,6%, 6%);
+                margin-bottom: 10%;
+                display: flex;
+                justify-content: center;
+                margin-top: clamp(20px, 9.5%, 9.5%) ;
+                .social-card{
+                    width: clamp(100px, $fs-320px, 320px);
+                    height: clamp(100px, $fs-320px, 320px);
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        transition: all 0.5s ease-in;
+                    }
+                    &:hover img{
+                        transform: scale(1.1);
+                    }
                 }
             }
         }
@@ -268,7 +270,8 @@ footer{
 @media screen and (max-width:1024px){
     footer{
         .social-card-wrapper
-        .social-card-container{
+        .social-card-container
+            .social-card-inner-container{
             top: 10%;
         }
         .footer-content-wrapper{
@@ -313,23 +316,26 @@ footer{
         .social-card-wrapper{
             padding: clamp(25px, 5.5%, 5.5%) clamp(20px, 6%, 6%) clamp(30px, 5.5%, 5.5%);
             .social-card-container{
-                padding-inline: 0;
-                top:unset;
-                left: unset;
-                right: unset;
-                position: relative;
-                width: 100%;
-                gap: 30px;
-                justify-content: flex-start;
-                margin: 20px 0 35px;
+                overflow: hidden;
+                .social-card-inner-container{
+                    padding-inline: 0;
+                    top:unset;
+                    left: unset;
+                    right: unset;
+                    position: relative;
+                    width: 100%;
+                    gap: 30px;
+                    justify-content: flex-start;
+                    margin: 20px 0 35px;
 
                 // flex-wrap: wrap;
-                overflow: hidden;
+                
                 .social-card{
                     flex: 0 0 auto;
                     width: calc(50% - 15px);
                     height: auto;
                 }
+            }
 
             }
         }
@@ -401,14 +407,22 @@ footer{
 
 @media screen and (max-width:480px){
     footer{
+        
          .social-card-wrapper .social-card-container{
             width: 80%;
-            margin: 10px auto 20px;
-            .social-card {
-                width:100%;
+            margin: 0 auto;
+            .social-card-inner-container{
+                width: 100%;
+                
+                gap: 0;
+                .social-card {
+                    width:100%;
+                }
             }
          } 
+          
         .footer-content-wrapper .footer-content-container{
+            margin-top: 20px;
             flex-direction: column;
             .footer-content{
                 font-size: 13px;

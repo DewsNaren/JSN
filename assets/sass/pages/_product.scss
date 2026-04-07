@@ -223,37 +223,39 @@
         
           .slider-inner-container{
             display: flex;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
-            gap: clamp(15px, $fs-30px, $fs-30px);
+            // gap: clamp(15px, $fs-30px, $fs-30px);
             .slider{
               transform: scale(1);
+              padding-bottom: 20px;
+                flex: 0 0 auto;
+                margin: 0 clamp(15px, $fs-30px, $fs-30px);
               .img-wrapper{
+                padding: clamp(16px, $fs-25px, $fs-25px);
                   img{
                    width: clamp(290px, $fs-542px, 542px);
-
-                   &.screenshot3-img{
-                    width: clamp(291px, $fs-543px, 543px);
-                   }
-                    &.screenshot1-img{
-                    width: clamp(315px, $fs-582px, 582px);
-                   }
                   }
                 }
               &.active{
-                transform: scale(1);
                   position: relative;
-                  padding-bottom: 20px;
+                    transform: scale(1);
+
+                  
                 // -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 2px 4px 5px rgba(0,0,0,0); 
                 // box-shadow: 0px 10px 13px -7px #000000, 0px 2px 4px 5px rgba(0,0,0,0);
                 z-index: 2;
                 .img-wrapper{
-                  padding: clamp(16px, $fs-25px, $fs-25px);
+                  
                   border-top-right-radius: 20px;
                   border-top-left-radius: 20px;
                   background-color: $white-f9;
                   img{
                     border: 1px solid $black-20;
+
+                    //  &.screenshot1-img{
+                    width: clamp(315px, $fs-582px, 582px);
+                  //  }
                   }
 
                 }
@@ -351,7 +353,7 @@
     background-color: $white-f8;
     padding-bottom: clamp(30px, 4.69%, 4.69%);
 
-    .testimonial-slider-wrapper .testimonial-slider-container .testimonial-card {
+    .testimonial-slider-wrapper .testimonial-slider-container .testimonial-slider-inner-container .testimonial-card {
       box-shadow: none;
     }
   }
@@ -572,12 +574,12 @@ footer.product-footer .footer-content-wrapper{
               .img-wrapper{
                 width: 100%;
                img{
-                &.screenshot3-img{
+                // &.screenshot3-img{
                   width: 301px;
-                }
-                &.screenshot2-img{
-                  width: 302px;
-                }
+                // }
+                // &.screenshot2-img{
+                  // width: 302px;
+                // }
                }
               }
               &.active{
@@ -694,34 +696,52 @@ footer.product-footer .footer-content-wrapper{
             width: 88.6%;
             .slider-inner-container{
               .slider{
-                flex: 0 0 100%;
+                // flex: 1;
                 width: 100%;
+                height: 100%;
+                margin: 0;
                 .img-wrapper{
                   width: 100%;
+                  aspect-ratio: 16/9;
                   img{
-                    &.screenshot3-img{
+                     &.screenshot3-img{
                       width: 100%;
-                    }
-                    &.screenshot2-img{
+                     }
+                     &.screenshot2-img{
                       width: 100%;
-                    }
+                      width: 100%;
+  height: 100%;
+  object-fit: cover; 
+
+                    // }
+                    margin: 0;
+                    // &.screenshot1-img{
+                    //   height: 110%;
+
+                    // }
                   }
                 }
                 &.active{
                   width: 100%;
                   .img-wrapper{
-                    width: 100%;
-                    img{
                       width: 100%;
-                    }
                   }
-                } 
+                }
+                }
+            
               }
             }
           } 
         }
       }
     }
+    .people-say.product .testimonial-slider-wrapper .testimonial-slider-container{
+       padding:1px 0.5px;
+      .testimonial-slider-inner-container .testimonial-card {
+        box-shadow: $box-shadow-2;
+      }
+    } 
+    
     .question{
 
       padding-inline: clamp(20px, 5%, 5%);

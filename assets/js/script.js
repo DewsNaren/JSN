@@ -1,85 +1,129 @@
 function initChooseSlider() {
-    const chooseWrapper=document.querySelector(".choose-us-card-wrapper")
-  const container = chooseWrapper.querySelector(".choose-us-card-inner-container");
-//   const prevBtn = document.querySelector(".recent-slider-btn.prev");
-  const nextBtn = chooseWrapper.querySelector(".arrow-btn");
+  const wrapper = document.querySelector(".choose-us-card-wrapper");
+  if (!wrapper) return;
 
-  let slides = [...container.querySelectorAll(".choose-us-card")];
-  container
-    .querySelectorAll(".choose-us-card.clone")
-    .forEach((clone) => clone.remove());
+  const container = wrapper.querySelector(".choose-us-card-inner-container");
+  const nextBtn = wrapper.querySelector(".arrow-btn");
 
-  function calculateGap() {
-  const gap = window.innerWidth * 0.0275; // proportional
-  return Math.min(Math.max(gap, 20), 52.8); // clamp between 20px and 52px
-}
-  slides.forEach((slide) => {
-    const startClone = slide.cloneNode(true);
-    const endClone = slide.cloneNode(true);
-    startClone.classList.add("clone");
-    endClone.classList.add("clone");
-    container.prepend(startClone);
-    container.append(endClone);
-  });
+  let currentIndex = 0;
+  let slideWidth = 0;
+  let isTransitioning = false;
+  let originalCount = 0;
 
-  let gap = calculateGap();
+  function updateSlide(index, animate = true) {
+    container.style.transition = animate
+      ? "transform 0.6s ease-in-out"
+      : "none";
 
-  requestAnimationFrame(() => {
-    const allSlides = [...container.querySelectorAll(".choose-us-card")];
+    container.style.transform = `translate3d(${-index * slideWidth}px,0,0)`;
+  }
 
-    let slideWidth = allSlides[0].getBoundingClientRect().width + gap;
-    let currentIndex = slides.length;
-    let isTransitioning = false;
-    // let firstVisit = true;
+  function goToSlide() {
+    if (isTransitioning) return;
 
-    function updateSlide(index, animate = true) {
-      container.style.transition = animate
-        ? "transform 0.6s ease-in-out"
-        : "none";
-      container.style.transform = `translateX(${-index * slideWidth}px)`;
-    }
+    isTransitioning = true;
+    currentIndex++;
+    updateSlide(currentIndex, true);
+  }
 
-    updateSlide(currentIndex, false);
+  function handleTransitionEnd() {
+    const allSlides = container.querySelectorAll(".choose-us-card");
 
-    function goToSlide(next = true) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      currentIndex += next ? 1 : -1;
-      updateSlide(currentIndex, true);
-    }
-
-    // function goToSlide(next = true) {
-    //   if (isTransitioning) return;
-    //   isTransitioning = true;
-    //   currentIndex += next ? 1 : -1;
-    //   updateSlide(currentIndex);
-    // }
-
-    function handleTransitionEnd() {
-      isTransitioning = false;
-      const total = allSlides.length;
-      const originalCount = slides.length;
-
-      if (currentIndex >= total - originalCount) {
-        currentIndex = originalCount;
-        updateSlide(currentIndex, false);
-      } else if (currentIndex < originalCount) {
-        currentIndex = total - originalCount - 1;
-        updateSlide(currentIndex, false);
-      }
-    }
-
-    // prevBtn.addEventListener("click", () => goToSlide(false));
-    nextBtn.addEventListener("click", () => goToSlide(true));
-
-    container.addEventListener("transitionend", handleTransitionEnd);
-
-    window.addEventListener("resize", () => {
-      gap = calculateGap();
-      slideWidth = allSlides[0].getBoundingClientRect().width + gap;
+    if (currentIndex >= allSlides.length - originalCount) {
+      currentIndex = originalCount;
       updateSlide(currentIndex, false);
-    });
+    }
+
+    if (currentIndex < originalCount) {
+      currentIndex = allSlides.length - originalCount - 1;
+      updateSlide(currentIndex, false);
+    }
+
+    isTransitioning = false;
+  }
+
+  function init() {
+    container.style.transition = "none";
+
+
+    container.querySelectorAll(".choose-us-card.clone").forEach(c => c.remove());
+
+    const slides = [...container.querySelectorAll(".choose-us-card")];
+    if (!slides.length) return;
+
+    originalCount = slides.length;
+
+
+    for (let i = originalCount - 1; i >= 0; i--) {
+      const clone = slides[i].cloneNode(true);
+      clone.classList.add("clone");
+      container.prepend(clone);
+    }
+
+
+    for (let i = 0; i < originalCount; i++) {
+      const clone = slides[i].cloneNode(true);
+      clone.classList.add("clone");
+      container.append(clone);
+    }
+
+    const allSlides = container.querySelectorAll(".choose-us-card");
+
+    if (allSlides.length > 1) {
+      slideWidth =
+        allSlides[1].offsetLeft - allSlides[0].offsetLeft;
+    } else {
+      slideWidth = allSlides[0].offsetWidth;
+    }
+
+    currentIndex = originalCount;
+    isTransitioning = false;
+
+    container.style.transform =
+      `translate3d(${-currentIndex * slideWidth}px,0,0)`;
+  }
+
+  // init
+  init();
+
+  // events
+  nextBtn.addEventListener("click", goToSlide);
+  container.addEventListener("transitionend", handleTransitionEnd);
+
+  window.addEventListener("resize", () => {
+    init(); 
   });
 }
 
 initChooseSlider();
+
+//toggle images
+const loveToContainer=document.querySelector(".love-to-do");
+
+const loadMoreBtn=loveToContainer.querySelector(".load-more-btn");
+
+const imgWrappers=loveToContainer.querySelectorAll(".img-wrapper");
+
+loadMoreBtn.addEventListener('click',()=>{
+  toggleImages(loadMoreBtn.childNodes[0].data.toLowerCase())
+})
+
+function toggleImages(text){
+ if(text.includes("more")){
+    imgWrappers.forEach(wrapper=>{
+      wrapper.classList.remove("hidden");
+    })
+    loadMoreBtn.childNodes[0].data="Load Less"
+  }
+  else{
+    imgWrappers.forEach((wrapper,i)=>{
+      if(i>4){
+        wrapper.classList.add("hidden");
+      }
+      loadMoreBtn.childNodes[0].data="Load More"
+      
+    })
+  }
+}
+
+

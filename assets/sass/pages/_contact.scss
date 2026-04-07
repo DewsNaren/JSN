@@ -129,7 +129,7 @@
                 .form-wrapper{
                     display: flex;
                     flex-direction: column;
-                    gap: clamp(15px, $fs-30px, $fs-30px);
+                    gap: clamp(20px, $fs-30px, $fs-30px);
 
                     .form-container{
                         width: 100%;
@@ -165,6 +165,7 @@
                             color: $red;
                             margin-top: 5px;
                             font-size: clamp(11px, $fs-16px, $fs-16px);
+                            margin-bottom: 0;
                         }
 
                     }  

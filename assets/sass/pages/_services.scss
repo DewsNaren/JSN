@@ -390,9 +390,13 @@
         }
       }
       .form-wrapper{
-        display: flex;
+        // display: flex;
         width: 33.293%;
         margin: 0 auto;
+        .form-container{
+          position: relative;
+          display: flex;
+        }
         .email-input{
           flex: 1;
           padding: clamp(8px, $fs-15px, $fs-15px);
@@ -432,7 +436,20 @@
              }
           }
         }
+        .error{
+          position: absolute;
+          margin: 0;
+          bottom: calc( clamp(20px, $fs-25px,$fs-25px)*-1);
+          color: $red;
+          font-weight: 500;
+          font-size: clamp(11px, $fs-16px, $fs-16px);
+
+          &.success {
+            color: $green;
+          }
+        }
         
+
 
       }
     }
@@ -992,5 +1009,11 @@ footer.service-footer .footer-content-wrapper{
       } 
      
     } 
+  }
+}
+
+@media screen and (max-width:330px){
+  .service-wrapper .newsletter .content-container .form-wrapper .error {
+    font-size: 10.8px;
   }
 }
