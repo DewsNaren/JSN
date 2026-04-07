@@ -1,2 +1,424 @@
 @use "../base/reset";
 @use "../abstracts/index" as *;
+
+.contact-wrapper {
+  .hero-section {
+    position: relative;
+    
+    .banner-img{
+      width: 100%;
+    }  
+    .hero-content-container {
+      position: absolute;
+      top: 72.2%;
+      left: 50%;
+      transform: translate(-50%, -72.8%);
+      text-align: center;
+      color: $white;
+      p {
+        font-size: clamp(13px, $fs-20px, $fs-20px);
+        font-weight: 300;
+        color: $white-80;
+        font-family: "Open Sans", sans-serif !important;
+        margin-bottom: clamp(8px, $fs-15px, $fs-15px);
+        line-height: 1;
+      }
+      h2 {
+        font-size: clamp(24px, $fs-78px, $fs-78px);
+        font-weight: 900;
+        text-align: center;
+        line-height: 1;
+      }
+    }
+  }
+  .question{
+    padding: clamp(30px, 6.85%, 6.85%) clamp(20px, 6%, 6%);
+    .header-wrapper {
+      text-align: center;
+      margin-bottom: clamp(40px, $fs-115px, $fs-115px);
+      h2 {
+        font-size: clamp(24px, $fs-48px, $fs-48px);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: clamp(20px, $fs-30px, $fs-30px);
+      }
+      .desc {
+       font-size: clamp(15px, $fs-24px, $fs-24px);
+        color: $grey-c2;
+        text-align: center;
+        width: 50%;
+        margin: 0 auto clamp(25px, $fs-60px, $fs-60px);
+        line-height: 1.38;
+      }
+      .contact-link{
+        font-size:  clamp(25px, $fs-63px, $fs-63px);
+        font-weight: 900;
+        color: $orange-47;
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(15px, $fs-35px, $fs-35px);
+        padding-right:clamp(50px, $fs-87px, $fs-87px);
+
+        img{
+            width: clamp(28px, $fs-48px, $fs-48px);
+        }
+      }
+    }
+    .content-wrapper{
+        display: flex;
+        width: 94.7%;
+        margin: 0 auto;
+        justify-content: space-between;
+    
+        .left-wrapper{
+            width: 42.44%;
+            padding:clamp(35px, $fs-135px, $fs-135px) clamp(30px, $fs-92px, $fs-92px) clamp(35px, $fs-90px, $fs-90px) ;
+            background: url("../images/contact/demo.png") no-repeat center / cover;
+            border-top-left-radius: clamp(12px, $fs-20px, $fs-20px);
+            border-bottom-left-radius: clamp(12px, $fs-20px, $fs-20px);
+            .desc{
+                font-size: clamp(14px, $fs-24px, $fs-24px);
+                text-align: center;
+                margin:0 auto clamp(30px, $fs-103px, $fs-103px);
+                width: 80%;
+                line-height: 1.3;
+                color:$white;
+                opacity: 0.7;
+            }
+            .demo-btn-container{
+                text-align: center;
+                
+                .demo-btn{
+                    font-size: clamp(14px, $fs-24px, $fs-24px);
+                    background-color: $orange-33;
+                    border: 1px solid $orange-33;
+                    color: $white;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: clamp(8px, $fs-18px, $fs-18px);
+                    padding: clamp(8px, $fs-15px, $fs-15px) clamp(20px, $fs-28px, $fs-28px);
+                    cursor: pointer;
+
+                    img{
+                    width: 11px;
+                    }
+                    &:hover{
+                    background-color: $white;
+                    border: 1px solid transparent;
+                    color: $black;
+                    img{
+                        filter: invert(1);
+                    }
+                    }
+                }
+                
+            }
+        }  
+        .right-wrapper{
+            width: 44.3%;
+            h3{
+                font-size: clamp(17px, $fs-28px, $fs-28px);
+                font-weight: 700;
+                color: $grey-61;
+                margin-bottom: clamp(17px, $fs-40px, $fs-40px);
+            }
+            .contact-form{
+                width: 87%;
+            
+                .form-wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    gap: clamp(15px, $fs-30px, $fs-30px);
+
+                    .form-container{
+                        width: 100%;
+                        position: relative;
+
+                        .form-group{
+                            input{
+                                border: none;
+                                font-size: clamp(13px, $fs-21px, $fs-21px);
+                                border-bottom: 1px solid $grey-a4;
+                                padding: clamp(8px, $fs-18px, $fs-18px) 0;
+                                width: 100%;
+                                outline: none;
+                                color: $black-90;
+                            }
+                            input::placeholder{
+                                font-size: clamp(13px, $fs-21px, $fs-21px);
+                                color: $grey-a4;
+                            }
+                            
+                            
+                            input:-webkit-autofill,
+                            input:-webkit-autofill:hover,
+                            input:-webkit-autofill:focus,
+                            select:-webkit-autofill {
+                                -webkit-box-shadow: 0 0 0px 1000px white inset;
+                                -webkit-text-fill-color: $black-90;
+                                transition: background-color 5000s ease-in-out 0s;
+                            }
+                        }
+                        .error{
+                            position: absolute;
+                            color: $red;
+                            margin-top: 5px;
+                            font-size: clamp(11px, $fs-16px, $fs-16px);
+                        }
+
+                    }  
+                }
+                .submit-btn{
+                    margin-top: clamp(30px, $fs-50px, $fs-50px);
+                    font-size: clamp(15px, $fs-24px, $fs-42px);
+                    background-color: transparent;
+                    border: 2px solid $orange-37;
+                    color: $orange-37;
+                    font-weight: 700;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: clamp(9px, $fs-15px, $fs-15px);
+                    padding: clamp(8px, $fs-15px, $fs-15px) clamp(16px, $fs-33px, $fs-33px);
+                    cursor: pointer;
+                    img{
+                        width: 11px;
+                        transition: transform 0.3s ease;
+    
+                    }
+                    &:hover{
+                        img{
+                            transform: translateX(3px);
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+  }
+}
+
+footer.contact-footer .footer-content-wrapper{
+    padding-top: 15px;
+}
+@media screen and (max-width:1600px){
+    .contact-wrapper .question .content-wrapper{
+        
+        .left-wrapper .desc .demo-btn-container .demo-btn img,.right-wrapper .contact-form .submit-btn img {
+            width: 10px;
+        }
+
+    } 
+}
+
+@media screen and (max-width:1400px){
+    .contact-wrapper .question .content-wrapper{
+        .left-wrapper .desc{
+            width: 82%;
+            .demo-btn-container .demo-btn img{
+                width: 9px;
+            }   
+        }
+        .right-wrapper .contact-form .submit-btn img {
+            width: 9px;
+        }
+    } 
+}
+
+@media screen and (max-width:1200px){
+    .contact-wrapper .question{
+        .header-wrapper .desc{
+            width: 57%;
+        }
+        .content-wrapper{
+            width: 100%;
+            .left-wrapper {
+                width: 43%;
+
+                .desc{
+                    width: 85%;
+                }
+
+                .demo-btn-container .demo-btn img{
+                    width: 8px;
+                }
+            }
+            .right-wrapper .contact-form .submit-btn img {
+                width: 8px;
+            }
+        } 
+    } 
+    
+}
+
+
+@media screen and (max-width:1024px){
+    .contact-wrapper .question{
+        .header-wrapper{
+            .desc{
+                width: 70%;
+            }
+            .contact-link{
+                img{
+                    width: clamp(28px, $fs-48px, $fs-48px);
+                }
+            }
+        }
+        
+        .content-wrapper{
+            width: 100%;
+            .left-wrapper {
+                width: 46%;
+
+                .desc{
+                    width: 100%;
+                }
+            }
+            .right-wrapper .contact-form{
+                width: 100%;
+                .submit-btn img {
+                    width: 8px;
+                }
+            } 
+            
+        } 
+    } 
+    
+}
+
+@media screen and (max-width:768px){
+    .contact-wrapper {
+        .hero-section{
+            .banner-img{
+                height: 220px;
+                object-fit: cover;
+            }
+            .hero-content-container{
+                h2{
+                font-size: clamp(24px, $fs-60px, $fs-60px);
+                margin-bottom: 0;
+                }
+                p{
+                font-size: clamp(14px, $fs-24px, $fs-24px);
+                margin-bottom: 12px;
+                }
+            }
+        }
+
+        .question{
+            .header-wrapper{
+                .desc{
+                    width: 80%;
+                    
+                }
+                .contact-link{
+                    padding-right: 0;
+                    img{
+                        width: clamp(28px, $fs-48px, $fs-48px);
+                    }
+                }
+            }
+        
+            .content-wrapper{
+            flex-direction: column;
+            gap: 30px;
+                .left-wrapper {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .desc{
+                        width: 100%;
+                        font-size: 15px;
+                    }
+                    border-radius: 10px;
+                }
+                .right-wrapper{
+                    width: 100%;
+
+                    h3{
+                        font-size: 18px;
+                    }
+                    .contact-form{
+                        .submit-btn{
+                            padding-inline: 20px;
+                        }
+                        .form-wrapper{
+                            gap: 25px;
+                        }
+                    } 
+
+                } 
+                
+            } 
+        } 
+
+    }
+       
+}
+
+@media screen and (max-width:600px){
+    .contact-wrapper {
+        .question{
+            .header-wrapper{
+                .desc{
+                    width: 100%;
+                    
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:480px){
+    .contact-wrapper {
+
+        .question{
+            padding-inline: 20px;
+            .header-wrapper{
+                h2{
+                    font-size: 23px;
+                }
+                .desc{
+                    font-size: 14px;
+                    
+                }
+            }
+            .content-wrapper{
+                .left-wrapper{
+                    padding-inline: 20px;
+                    .desc{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:390px){
+    .contact-wrapper {
+
+        .question{
+            padding-inline: 20px;
+            .header-wrapper{
+                h2{
+                    font-size: 21px;
+                }
+                .desc{
+                    font-size: 13px;
+                    
+                }
+            }
+            .content-wrapper{
+                .left-wrapper{
+                    .desc{
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}

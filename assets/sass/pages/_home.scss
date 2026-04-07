@@ -32,7 +32,7 @@
         text-align: center;
         margin-bottom: 0;
       }
-      button {
+      .contact-btn {
         background-color: $black-30;
         color: $orange-47;
         border: 2px solid $orange-47;
@@ -40,7 +40,7 @@
         font-size: clamp(14px, $fs-23px, $fs-23px);
         font-weight: 500;
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         gap: clamp(10px, $fs-18px, $fs-18px);
         margin: clamp(30px, $fs-70px, $fs-70px) auto 0;
@@ -126,71 +126,76 @@
     }
     .choose-us-card-wrapper{
         position: relative;
-        padding-inline: 5%;
+        padding-inline: 7%;
         .choose-us-card-container{ 
-            display: flex;
-            gap: clamp(20px, $fs-52px, $fs-52px);
-            justify-content: center;
+          
             overflow: hidden;
-            .choose-us-card{
-                background-color: $white;
-                width: 100%;
-                flex:0 0 calc(100% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
-                padding: clamp(12px, $fs-20px, $fs-20px) clamp(12px, $fs-20px, $fs-20px) clamp(20px, $fs-40px, $fs-40px);
-                box-shadow: $box-shadow-1;
+            .choose-us-card-inner-container{ 
                 display: flex;
-                flex-direction: column;
-                .img-wrapper{
+                gap: clamp(20px, $fs-52px, $fs-52px);
+                justify-content: start;
+                .choose-us-card{
+                    background-color: $white;
                     width: 100%;
-                    margin: 0 auto clamp(12px, $fs-45px, $fs-45px);
-                    overflow: hidden;
-                    img{
+                    // flex:0 0 calc(100% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
+                    flex:0 0 calc(100% / 2.98 - clamp(20px, $fs-52px, $fs-52px) * 1);
+                    padding: clamp(12px, $fs-20px, $fs-20px) clamp(12px, $fs-20px, $fs-20px) clamp(20px, $fs-40px, $fs-40px);
+                    box-shadow: $box-shadow-1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    .img-wrapper{
                         width: 100%;
-                        transition: transform 0.4s ease-in;
-                    }
-                    &:hover{
+                        margin: 0 auto clamp(12px, $fs-45px, $fs-45px);
+                        overflow: hidden;
                         img{
-                            transform: scale(1.07);
+                            width: 100%;
+                            transition: transform 0.4s ease-in;
+                        }
+                        &:hover{
+                            img{
+                                transform: scale(1.07);
+                            }
                         }
                     }
-                }
-                .card-body-container{
-                    padding-inline: 5px;
-                    h3{
-                        font-size: clamp(16px, $fs-25px, $fs-25px);
-                        font-weight: 900;
-                        line-height: 1.18;
-                        margin-bottom: clamp(12px, $fs-28px, $fs-28px);
-                        font-family: "Lato", sans-serif !important  ;
-                        text-transform: capitalize;
+                    .card-body-container{
+                        padding-inline: 5px;
+                        h3{
+                            font-size: clamp(16px, $fs-25px, $fs-25px);
+                            font-weight: 900;
+                            line-height: 1.18;
+                            margin-bottom: clamp(12px, $fs-28px, $fs-28px);
+                            font-family: "Lato", sans-serif !important  ;
+                            text-transform: capitalize;
+                        }
+                        .desc-1{
+                            font-size: clamp(13px, $fs-19_5px, $fs-19_5px);
+                            color: $grey-70;
+                            font-family: "Lato", sans-serif !important  ;
+                            // font-family: "Open Sans", sans-serif !important;
+                            margin-bottom: clamp(18px, $fs-50px, $fs-50px);
+                            line-height: 1.33;
+                            width: 97%;
+                        }
                     }
-                    .desc-1{
-                        font-size: clamp(13px, $fs-19_5px, $fs-19_5px);
-                        color: $grey-70;
-                        font-family: "Lato", sans-serif !important  ;
-                        // font-family: "Open Sans", sans-serif !important;
-                        margin-bottom: clamp(18px, $fs-50px, $fs-50px);
-                        line-height: 1.33;
-                        width: 97%;
-                    }
-                }
-                .learn-more-btn{
-                    font-size: clamp(14px, $fs-18px, $fs-18px);
-                    color: $orange-37;
-                    font-weight: 700;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                    padding-left: 5px;
-                    position: relative;
-                    transition: transform 0.3s ease-in-out;
-                    margin-top: auto;
-                    img{
-                        width: 8px;
-                        height: 12px;
-                    }
-                    &:hover{
-                        transform: translateX(5px); 
+                    .learn-more-btn{
+                        font-size: clamp(14px, $fs-18px, $fs-18px);
+                        color: $orange-37;
+                        font-weight: 700;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding-left: 5px;
+                        position: relative;
+                        transition: transform 0.3s ease-in-out;
+                        margin-top: auto;
+                        img{
+                            width: 8px;
+                            height: 12px;
+                        }
+                        &:hover{
+                            transform: translateX(5px); 
+                        }
                     }
                 }
             }
@@ -386,33 +391,35 @@
 
 @media screen and (max-width:1024px){
     .home-wrapper{
-        .hero-section .hero-content-container button img {
+        .hero-section .hero-content-container .contact-btn img {
             width: 9px;
         }
         .choose-us{
             .choose-us-card-wrapper{
-                padding-inline: 4%;
+                padding-inline: 3%;
                  .choose-us-card-container{
-                    .choose-us-card{
-                        flex:0 0 calc(110% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
-                        padding: 10px 10px 18px;
-                        .card-body-container{
-                            padding-left: 0;
-                            h3{
-                                font-size: 15px;
-                            }
-                            .desc-1{
-                                font-size: 12px;
+                    .choose-us-card-inner-container{
+                        .choose-us-card{
+                            // flex:0 0 calc(100% / 3 - clamp(20px, $fs-52px, $fs-52px) * 2);
+                            padding: 10px 10px 18px;
+                            .card-body-container{
+                                padding-left: 0;
+                                h3{
+                                    font-size: 15px;
+                                }
+                                .desc-1{
+                                    font-size: 12px;
+                                }
+                            } 
+                            .learn-more-btn{
+                                padding-left: 0;
                             }
                         } 
-                        .learn-more-btn{
-                            padding-left: 0;
-                        }
-                    } 
+                    }
 
                 } 
                 .arrow-btn{
-                    right: 5px;
+                    right: -9px;
                 }
             }  
            
@@ -436,7 +443,7 @@
 @media screen and (max-width:768px){
     .home-wrapper{
         .hero-section{
-            .hero-content-container button{
+            .hero-content-container .contact-btn{
                 img {
                     width: 8px;
                 }
@@ -452,11 +459,13 @@
                 flex-direction: column;
                 gap: 25px;
                 .choose-us-card-container{
-                    width:100%;
-                    justify-content: flex-start;
-                    gap: 30px;
-                    .choose-us-card{
-                        flex:0 0 calc(100% / 2 - clamp(15px, $fs-52px, $fs-52px) * 1);
+                    .choose-us-card-inner-container{
+                        width:100%;
+                        justify-content: flex-start;
+                        gap: 30px;
+                        .choose-us-card{
+                            flex:0 0 calc(100% / 2 - clamp(15px, $fs-52px, $fs-52px) * 1);
+                        }
                     }
                 }
                 .arrow-btn{
@@ -507,7 +516,10 @@
             .choose-us-card-wrapper{
                padding-inline: 0; 
                .choose-us-card-container {
-                gap: 30px;
+                    .choose-us-card-inner-container{
+                        gap: 30px;
+                    }
+                    
                }
             }
         }
@@ -549,6 +561,7 @@
             } 
             .choose-us-card-wrapper 
             .choose-us-card-container 
+            .choose-us-card-inner-container
             .choose-us-card{
                 flex: 0 0 100%;
             }
@@ -571,7 +584,7 @@
             p{
                 font-size: 13px;
             }
-            button {
+            .contact-btn {
                 border-width: 1px;
             }
         } 

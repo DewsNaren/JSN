@@ -135,7 +135,7 @@
             filter: invert(0);
         }
     }
-    &.media-2-header{
+    &.media-detail-header{
         position: sticky;
         background-color: $white;
         .logo-container .logo{ 
@@ -311,6 +311,12 @@
             top:0px;
             background-color: $white;
             pointer-events: all;
+        }
+
+        &.media-detail-header{
+            .menu-btn img{
+                filter: invert(0);
+            }
         }
     }
 }
