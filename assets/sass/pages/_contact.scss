@@ -195,6 +195,16 @@
                     }
                 }
             }
+            .success-message{
+                color: $green;
+                font-size: clamp(13px,$fs-18px,$fs-18px);
+                font-weight: 500;
+                visibility: hidden;
+                margin-top: clamp(10px,$fs-20px,$fs-20px);
+            }
+            .success-message.active{
+                visibility: visible;
+            }
         }
     }
   }

@@ -135,6 +135,30 @@
             filter: invert(0);
         }
     }
+    &.media-header{
+        .header-actions{
+            nav ul li .nav-link.active{
+                color: $orange-33;
+                .dropdown-arrow{
+                    filter: brightness(0) saturate(100%) 
+                    invert(62%) sepia(78%) saturate(748%) 
+                    hue-rotate(347deg) brightness(101%) contrast(101%);
+                }
+            }
+        }
+        &.scrolled{
+            .header-actions{
+                nav ul li .nav-link.active{
+                      color: $orange-33;
+                    .dropdown-arrow{
+                        filter: brightness(0) saturate(100%) 
+                        invert(62%) sepia(78%) saturate(748%) 
+                        hue-rotate(347deg) brightness(101%) contrast(101%);
+                    }
+                }
+            }
+        }
+    }
     &.media-detail-header{
         position: sticky;
         background-color: $white;
@@ -152,6 +176,11 @@
                     }
                     &.active{
                         color: $orange-47;
+                    .dropdown-arrow{
+                        filter: brightness(0) saturate(100%) 
+                        invert(62%) sepia(78%) saturate(748%) 
+                        hue-rotate(347deg) brightness(101%) contrast(101%);
+                    }
                     }
                 }
             }
@@ -181,6 +210,15 @@
                     color: $black;
                    .dropdown-arrow{
                         filter: invert(1);
+                    }
+
+                    &.active{
+                        color: $orange-33;
+                        .dropdown-arrow{
+                            filter: brightness(0) saturate(100%) 
+                            invert(62%) sepia(78%) saturate(748%) 
+                            hue-rotate(347deg) brightness(101%) contrast(101%);
+                        }
                     }
                 }
             }

@@ -44,13 +44,16 @@
   <main class="media-detail-wrapper ">
 
     <section class="hero-section">
-      <img src="./assets/images/media/detail banner.jpg"  alt="detail banner" class="banner-img" />
+      <div class="banner-img-wrapper">
+        <img src="./assets/images/media/detail banner.jpg" class="detail-banner-img"  alt="detail banner" class="banner-img" />
+      </div>
+      
     </section>
     <section class="detail-container">
         <div class="content">
             <div class="header-wrapper">
-                <h2>The 10 most beautiful places you should visit on your life</h2>
-                <p class="desc"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 13,2020</p>
+                <h2 class="blog-title">The 10 most beautiful places you should visit on your life</h2>
+                <p class="desc blog-date"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 13,2020</p>
             </div>
             <div class="text-container">
                 <p class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec mollis. Quisque convallis libero in sapien pharetra tincidunt. Aliquam elit ante, malesuada id, tempor eu, gravida id, odio. Maecenas suscipit, risus et eleifend imperdiet.</p>
@@ -70,28 +73,28 @@
             <div class="post-card-container">
                 <div class="post-card">
                     <div class="img-wrapper">
-                        <img src="./assets/images/media/rp1.jpg" alt="networking resources">
+                        <img src="./assets/images/media/rp1.jpg" class="card-img" alt="networking resources">
                     </div>
                     <h4>Where Can You Find a New Networking Resources</h4>
                     <p class="date-text"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 13,2020</p>
                 </div>
                 <div class="post-card">
                     <div class="img-wrapper">
-                        <img src="./assets/images/media/rp2.jpg" alt="application">
+                        <img src="./assets/images/media/rp2.jpg" class="card-img" alt="application">
                     </div>
                     <h4>Converting an enquiry into an application</h4>
                     <p class="date-text"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 12,2020</p>
                 </div>
                 <div class="post-card">
                     <div class="img-wrapper">
-                        <img src="./assets/images/media/rp3.jpg" alt="clients">
+                        <img src="./assets/images/media/rp3.jpg" class="card-img" alt="clients">
                     </div>
                     <h4>How to explain the ASIC inquiry to clients</h4>
                     <p class="date-text"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 12,2020</p>
                 </div>
                 <div class="post-card">
                     <div class="img-wrapper">
-                        <img src="./assets/images/media/rp4.jpg" alt="party">
+                        <img src="./assets/images/media/rp4.jpg" class="card-img" alt="party">
                     </div>
                     <h4>We found most beautiful Place for Nov Party</h4>
                     <p class="date-text"><img src="./assets/images/media/ic_date.png" alt="date"> Jul 12,2020</p>
@@ -151,13 +154,13 @@
         </div>
         <div class="about">
           <h3 class="text-capitalize">about company</h3>
-          <ul>
-            <li><a href="#" class="text-capitalize">about us</a></li>
-            <li><a href="#" class="text-capitalize">why choose us</a></li>
-            <li><a href="#" class="text-capitalize">our services</a></li>
-            <li><a href="#" class="text-capitalize">our team</a></li>
-            <li><a href="#" class="text-capitalize">contact us</a></li>
-          </ul>
+            <ul>
+              <li><a href="./about.html#our-team" class="text-capitalize">about us</a></li>
+              <li><a href="./index.html#why-choose-us" class="text-capitalize">why choose us</a></li>
+              <li><a href="./services.html" class="text-capitalize">our services</a></li>
+              <li><a href="./about.html#our-team" class="text-capitalize">our team</a></li>
+              <li><a href="./contact.html" class="text-capitalize">contact us</a></li>
+            </ul>
         </div>
         <div class="our-services">
           <h3 class="text-capitalize">our services</h3>
@@ -199,5 +202,6 @@
   </footer>
   <script src="./assets/js/global.js"></script>
   <script src="./assets/js/blogs.js"></script>
+  <script src="./assets/js/media-detail.js"></script>
 </body>
 </html>

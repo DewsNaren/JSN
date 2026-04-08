@@ -445,7 +445,9 @@
           font-size: clamp(11px, $fs-16px, $fs-16px);
 
           &.success {
+             bottom: calc( clamp(24px, $fs-35px,$fs-35px)*-1);
             color: $green;
+            font-size: clamp(11px, $fs-22px, $fs-22px);
           }
         }
         
@@ -1013,7 +1015,13 @@ footer.service-footer .footer-content-wrapper{
 }
 
 @media screen and (max-width:330px){
-  .service-wrapper .newsletter .content-container .form-wrapper .error {
-    font-size: 10.8px;
-  }
+  .service-wrapper .newsletter .content-container .form-wrapper{
+    .error {
+      font-size: 10.8px;
+    
+      &.success {
+          font-size: 10.8px;
+        }
+    }
+  } 
 }

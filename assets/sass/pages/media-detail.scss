@@ -6,8 +6,15 @@
   .hero-section {
     position: relative;
     
-    .banner-img{
+    .banner-img-wrapper{
+        height: $fs-644px;
+        width: 100%;
+    }
+    .detail-banner-img{
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
     }  
   }
 
@@ -131,9 +138,11 @@
                     .img-wrapper{
                         margin-bottom: clamp(20px, $fs-35px, $fs-35px);
                         overflow: hidden;
+                        cursor: pointer;
                         img{
                             width: 100%;
                             transition: transform 0.4s ease-in;
+                        
                         }
                         &:hover{
                             img{
@@ -250,10 +259,10 @@
 @media screen and (max-width:768px){
     .media-detail-wrapper{
         .hero-section{
-            .banner-img{
+            .banner-img-wrapper{
                 height: 300px;
-                object-fit: cover;
             }
+            
         }
         .detail-container{
             .content{

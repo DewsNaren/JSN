@@ -2,9 +2,9 @@ const homeHeader = document.querySelector('.home-header');
 const homeHeaderHeight = homeHeader.offsetHeight;   
 window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
-        homeHeader.classList.add('scrolled');
+      homeHeader.classList.add('scrolled');
     } else {
-        homeHeader.classList.remove('scrolled');
+      homeHeader.classList.remove('scrolled');
     }
 }); 
 
@@ -119,17 +119,42 @@ function inittestiSlider(testiWrapper) {
 
   init();
 
-  // =========================
-  // EVENTS
-  // =========================
+//btn click
   nextBtn?.addEventListener("click", () => goToSlide(true));
   prevBtn?.addEventListener("click", () => goToSlide(false));
 
   container.addEventListener("transitionend", handleTransitionEnd);
+  container.addEventListener("transitionend", handleTransitionEnd);
 
-  // =========================
-  // RESIZE (DEBOUNCE)
-  // =========================
+
+  let startX = 0;
+  let startY = 0;
+  const swipeThreshold = 50;
+
+  function startSwipe(e) {
+    startX = e.changedTouches[0].screenX;
+    startY = e.changedTouches[0].screenY;
+  }
+
+  function endSwipe(e) {
+    const endX = e.changedTouches[0].screenX;
+    const endY = e.changedTouches[0].screenY;
+    const dx = endX - startX;
+    const dy = endY - startY;
+
+    if (
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > swipeThreshold &&
+      !isTransitioning
+    ) {
+      goToSlide(dx < 0);
+    }
+  }
+
+  container.addEventListener("touchstart", startSwipe, { passive: true });
+  container.addEventListener("touchend", endSwipe);
+
+
   let resizeTimer;
 
   window.addEventListener("resize", () => {
@@ -141,12 +166,13 @@ function inittestiSlider(testiWrapper) {
   });
 }
 
-
 const testiWrapper = document.querySelector(".testimonial-slider-wrapper");
 
 if (testiWrapper) {
   inittestiSlider(testiWrapper);
+
 }
+
 
 
 //client marque
@@ -333,4 +359,5 @@ closeBtn.addEventListener("click",()=>{
 window.addEventListener("resize",()=>{
   headerActions.classList.remove("active");
   closeBtn.classList.remove("not-active");
+  body.classList.remove("not-active");
 })

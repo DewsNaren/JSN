@@ -1,3 +1,6 @@
+const screenShot = document.querySelector(".screenshot");
+
+
 // function initscreenSlider(screenShot) {
 //   if (!screenShot) return;
 
@@ -12,80 +15,61 @@
 //   let isTransitioning = false;
 //   let originalCount = 0;
 
-//   // ======================
-//   // UPDATE SLIDE (PERFECT CENTER)
-//   // ======================
 //   function updateSlide(index, animate = true) {
-//     const wrapperWidth = outerContainer.offsetWidth;
 //     const slides = container.querySelectorAll(".slider");
-
 //     const slide = slides[index];
 //     if (!slide) return;
 
-//     // ✅ PERFECT CENTER CALCULATION
+//     const wrapperWidth = outerContainer.offsetWidth;
 //     const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
 //     const containerCenter = wrapperWidth / 2;
 //     const offset = slideCenter - containerCenter;
 
-//     container.style.transition = animate
-//       ? "transform 0.6s ease"
-//       : "none";
-
+//     container.style.transition = animate ? "transform 0.6s ease" : "none";
 //     container.style.transform = `translate3d(${-offset}px,0,0)`;
-
-//     // ✅ ACTIVE CLASS (ONLY REAL SLIDES)
-//     const realSlides = [...container.querySelectorAll(".slider:not(.clone)")];
-
-//     const realIndex =
-//       (index - originalCount + originalCount) % originalCount;
-
-//     slides.forEach(slide => slide.classList.remove("active"));
-
-//     if (realSlides[realIndex]) {
-//       realSlides[realIndex].classList.add("active");
-//     }
 //   }
 
-//   // ======================
-//   // NEXT / PREV
-//   // ======================
+//   // ✅ simple and correct
+//   function getRealIndex(index) {
+//     return ((index - originalCount) % originalCount + originalCount) % originalCount + originalCount;
+//   }
+
+//   function setActive(index) {
+//     const slides = container.querySelectorAll(".slider");
+//     slides.forEach(slide => slide.classList.remove("active"));
+//     if (slides[index]) slides[index].classList.add("active");
+//   }
+
 //   function goToSlide(next = true) {
 //     if (isTransitioning) return;
 
 //     isTransitioning = true;
 //     currentIndex += next ? 1 : -1;
 
+//     setActive(getRealIndex(currentIndex)); // ✅ instant active, no jerk
 //     updateSlide(currentIndex, true);
 //   }
 
-//   // ======================
-//   // LOOP FIX (NO EMPTY SPACE)
-//   // ======================
 //   function handleTransitionEnd() {
 //     const slides = container.querySelectorAll(".slider");
 
-//     // forward loop
+//     // forward boundary — land on first real slide
 //     if (currentIndex >= slides.length - originalCount) {
 //       currentIndex = originalCount;
 //       updateSlide(currentIndex, false);
 //     }
 
-//     // backward loop
-//     if (currentIndex < originalCount) {
-//       currentIndex = slides.length - originalCount;
+//     // backward boundary — land on last real slide ✅ fix
+//     else if (currentIndex < originalCount) {
+//       currentIndex = originalCount * 2 - 1;
 //       updateSlide(currentIndex, false);
 //     }
 
 //     isTransitioning = false;
 //   }
 
-//   // ======================
-//   // INIT
-//   // ======================
 //   function init() {
 //     container.style.transition = "none";
-
-//     // remove old clones
 //     container.querySelectorAll(".clone").forEach(c => c.remove());
 
 //     const originalSlides = [...container.querySelectorAll(".slider")];
@@ -93,14 +77,12 @@
 
 //     originalCount = originalSlides.length;
 
-//     // 🔥 clone BEFORE
 //     for (let i = originalCount - 1; i >= 0; i--) {
 //       const clone = originalSlides[i].cloneNode(true);
 //       clone.classList.add("clone");
 //       container.prepend(clone);
 //     }
 
-//     // 🔥 clone AFTER
 //     for (let i = 0; i < originalCount; i++) {
 //       const clone = originalSlides[i].cloneNode(true);
 //       clone.classList.add("clone");
@@ -111,44 +93,22 @@
 //     isTransitioning = false;
 
 //     updateSlide(currentIndex, false);
+//     requestAnimationFrame(() => setActive(currentIndex));
 //   }
 
-//   // ======================
-//   // INIT CALL
-//   // ======================
 //   init();
 
-//   // ======================
-//   // EVENTS
-//   // ======================
 //   nextBtn?.addEventListener("click", () => goToSlide(true));
 //   prevBtn?.addEventListener("click", () => goToSlide(false));
-
 //   container.addEventListener("transitionend", handleTransitionEnd);
 
-//   // ======================
-//   // RESIZE (DEBOUNCE)
-//   // ======================
-//   let resizeTimer;
 
+//   let resizeTimer;
 //   window.addEventListener("resize", () => {
 //     clearTimeout(resizeTimer);
-//     resizeTimer = setTimeout(() => {
-//       init();
-//     }, 150);
+//     resizeTimer = setTimeout(() => init(), 150);
 //   });
 // }
-
-
-// // ======================
-// // INIT
-// // ======================
-// const screenShot = document.querySelector(".screenshot");
-
-// if (screenShot) {
-//   initscreenSlider(screenShot);
-// }
-
 
 function initscreenSlider(screenShot) {
   if (!screenShot) return;
@@ -164,85 +124,77 @@ function initscreenSlider(screenShot) {
   let isTransitioning = false;
   let originalCount = 0;
 
-  // ======================
-  // UPDATE SLIDE POSITION
-  // ======================
-  function updateSlide(index, animate = true) {
-    const wrapperWidth = outerContainer.offsetWidth;
-    const slides = container.querySelectorAll(".slider");
+  // Touch
+  let startX = 0;
+  let startY = 0;
+  const swipeThreshold = 50;
 
+  function updateSlide(index, animate = true) {
+    const slides = container.querySelectorAll(".slider");
     const slide = slides[index];
     if (!slide) return;
 
+    const wrapperWidth = outerContainer.offsetWidth;
     const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
     const containerCenter = wrapperWidth / 2;
     const offset = slideCenter - containerCenter;
 
-    container.style.transition = animate
-      ? "transform 0.6s ease"
-      : "none";
-
+    container.style.transition = animate ? "transform 0.6s ease" : "none";
     container.style.transform = `translate3d(${-offset}px,0,0)`;
   }
 
-  // ======================
-  // SET ACTIVE (CENTER SLIDE ALWAYS)
-  // ======================
-  function setActive(index) {
-    const slides = container.querySelectorAll(".slider");
-
-    slides.forEach(slide => slide.classList.remove("active"));
-
-    if (slides[index]) {
-      slides[index].classList.add("active");
-    }
+  function getRealIndex(index) {
+    return ((index - originalCount) % originalCount + originalCount) % originalCount + originalCount;
   }
 
-  // ======================
-  // NEXT / PREV
-  // ======================
+  function setActive(index) {
+    const slides = container.querySelectorAll(".slider");
+    slides.forEach(slide => slide.classList.remove("active"));
+    if (slides[index]) slides[index].classList.add("active");
+  }
+
   function goToSlide(next = true) {
     if (isTransitioning) return;
 
     isTransitioning = true;
     currentIndex += next ? 1 : -1;
 
-    // ✅ Apply active immediately (fix jerk)
-    setActive(currentIndex);
-
+    setActive(getRealIndex(currentIndex));
     updateSlide(currentIndex, true);
   }
 
-  // ======================
-  // LOOP FIX
-  // ======================
   function handleTransitionEnd() {
     const slides = container.querySelectorAll(".slider");
 
-    // forward loop
     if (currentIndex >= slides.length - originalCount) {
       currentIndex = originalCount;
       updateSlide(currentIndex, false);
-      setActive(currentIndex);
-    }
-
-    // backward loop
-    if (currentIndex < originalCount) {
-      currentIndex = slides.length - originalCount;
+    } else if (currentIndex < originalCount) {
+      currentIndex = originalCount * 2 - 1;
       updateSlide(currentIndex, false);
-      setActive(currentIndex);
     }
 
     isTransitioning = false;
   }
 
-  // ======================
-  // INIT
-  // ======================
+  function startSwipe(e) {
+    startX = e.changedTouches[0].screenX;
+    startY = e.changedTouches[0].screenY;
+  }
+
+  function endSwipe(e) {
+    const endX = e.changedTouches[0].screenX;
+    const endY = e.changedTouches[0].screenY;
+    const dx = endX - startX;
+    const dy = endY - startY;
+
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > swipeThreshold && !isTransitioning) {
+      goToSlide(dx < 0);
+    }
+  }
+
   function init() {
     container.style.transition = "none";
-
-    // remove old clones
     container.querySelectorAll(".clone").forEach(c => c.remove());
 
     const originalSlides = [...container.querySelectorAll(".slider")];
@@ -250,14 +202,12 @@ function initscreenSlider(screenShot) {
 
     originalCount = originalSlides.length;
 
-    // clone BEFORE
     for (let i = originalCount - 1; i >= 0; i--) {
       const clone = originalSlides[i].cloneNode(true);
       clone.classList.add("clone");
       container.prepend(clone);
     }
 
-    // clone AFTER
     for (let i = 0; i < originalCount; i++) {
       const clone = originalSlides[i].cloneNode(true);
       clone.classList.add("clone");
@@ -268,41 +218,44 @@ function initscreenSlider(screenShot) {
     isTransitioning = false;
 
     updateSlide(currentIndex, false);
-    setActive(currentIndex); // ✅ initial active
+    requestAnimationFrame(() => setActive(currentIndex));
   }
 
-  // ======================
-  // INIT CALL
-  // ======================
   init();
 
-  // ======================
-  // EVENTS
-  // ======================
   nextBtn?.addEventListener("click", () => goToSlide(true));
   prevBtn?.addEventListener("click", () => goToSlide(false));
-
   container.addEventListener("transitionend", handleTransitionEnd);
+  container.addEventListener("touchstart", startSwipe, { passive: true });
+  container.addEventListener("touchend", endSwipe);
 
-  // ======================
-  // RESIZE (DEBOUNCE)
-  // ======================
   let resizeTimer;
-
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      init();
-    }, 150);
+    resizeTimer = setTimeout(() => init(), 150);
   });
 }
-
-
-// ======================
-// INIT
-// ======================
-const screenShot = document.querySelector(".screenshot");
 
 if (screenShot) {
   initscreenSlider(screenShot);
 }
+
+
+
+
+const tabBtns=document.querySelectorAll(".tab-btn");
+
+tabBtns.forEach(btn=>{
+    const container = screenShot.querySelector(".slider-inner-container");
+
+  btn.addEventListener("click",()=>{
+    tabBtns.forEach(btn=>btn.classList.remove("active"));
+    btn.classList.add("active");
+    const device=btn.dataset.target
+    container.classList.remove("desktop","mobile")
+    container.classList.add(device);
+    initscreenSlider(screenShot);
+  })
+})
+
+

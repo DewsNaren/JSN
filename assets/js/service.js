@@ -14,7 +14,7 @@ subBtn.addEventListener('click',  () => {
         setTimeout(() => {
             errorElement.classList.remove("show", "success");
             errorElement.textContent="";
-        }, 4000);
+        }, 2000);
     }
 
 

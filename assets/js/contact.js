@@ -2,7 +2,7 @@ const contactForm = document.querySelector(".contact-form");
 
 const contactInputs = contactForm.querySelectorAll("input,select");
 const formSubmitBtn = contactForm.querySelector(".submit-btn");
-
+const successMessage=document.querySelector(".success-message");
 
   function validateContactForm() {
     let isValid = true;
@@ -56,22 +56,23 @@ const formSubmitBtn = contactForm.querySelector(".submit-btn");
 
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("valival",validateContactForm())
-    if (validateContactForm()) {
+
+    if(!validateContactForm())
+      return;
 
       formSubmitBtn.disabled = true;
-      console.log(getContactFormData());
 
-    //   showToast("success", "Message sent Successfully");
+      successMessage.classList.add("active");
+      successMessage.textContent="Form Submitted successfully";
+
 
       setTimeout(() => {
         delFormData();
         formSubmitBtn.disabled = false;
-      }, 3000);
+        successMessage.classList.remove("active");
+      }, 2000);
 
-    } else {
-      console.log("not validated");
-    }
+    
   });
 
   /*input click listeners*/
