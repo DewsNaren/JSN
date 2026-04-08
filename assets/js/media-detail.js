@@ -34,8 +34,6 @@ function renderPosts(selectedIndex){
     cardClickHandler(postCards)
 }
 renderPosts(selectedIndex)
-// postContainer.innerHTML
-console.log(selectedBlog)
 
 function cardClickHandler(cards){
     cards.forEach(card=>{
