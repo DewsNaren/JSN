@@ -243,6 +243,8 @@ if (screenShot) {
 
 
 
+
+
 const tabBtns=document.querySelectorAll(".tab-btn");
 
 tabBtns.forEach(btn=>{
