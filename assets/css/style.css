@@ -819,7 +819,7 @@ footer .chat-btn-container .chat-btn:hover {
   }
 }
 .people-say {
-  padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 10.4%, 10.4%) clamp(25px, 7.4%, 7.4%);
+  padding: clamp(35px, 6.3%, 6.3%) clamp(20px, 10.4%, 10.4%) clamp(35px, 7.4%, 7.4%);
 }
 .people-say h2 {
   font-family: "Lato", sans-serif !important;
@@ -1012,10 +1012,13 @@ footer .chat-btn-container .chat-btn:hover {
 }
 @media screen and (max-width: 600px) {
   .people-say {
-    padding-inline: clamp(20px, 5%, 5%);
+    padding: clamp(35px, 6.3%, 6.3%) 20px clamp(35px, 7.4%, 7.4%);
   }
   .people-say .people-say-desc {
     width: 100%;
+  }
+  .people-say .client-wrapper .client-container {
+    gap: 25px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -1501,9 +1504,6 @@ footer .chat-btn-container .chat-btn:hover {
   }
   .home-wrapper .help-you {
     padding: clamp(25px, 6.3%, 6.3%) clamp(20px, 6%, 6%) clamp(25px, 7.4%, 7.4%);
-  }
-  .home-wrapper .people-say {
-    padding: clamp(25px, 6.3%, 6.3%) 20px clamp(25px, 7.4%, 7.4%);
   }
 }
 @media screen and (max-width: 480px) {
@@ -3369,9 +3369,7 @@ footer.product-footer .footer-content-wrapper {
   .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-outer-container .slider-inner-container.mobile .slider.active .img-wrapper .overlay::before {
     content: "";
     position: absolute;
-    top: -2px;
-    left: 40%;
-    transform: translateX(-50%);
+    top: 4px;
     width: 4px;
     height: 4px;
     background: #dbdbdb;
@@ -3569,7 +3567,7 @@ footer.product-footer .footer-content-wrapper {
     position: relative;
   }
   .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-outer-container {
-    width: 88.6%;
+    width: 100%;
   }
   .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-outer-container .slider-inner-container .slider .img-wrapper {
     width: 100%;
@@ -5237,6 +5235,7 @@ footer.service-footer .footer-content-wrapper {
   font-weight: 500;
   visibility: hidden;
   margin-top: clamp(10px, 1.05vw, 1.05vw);
+  margin-bottom: 0;
 }
 .contact-wrapper .question .content-wrapper .right-wrapper .success-message.active {
   visibility: visible;
@@ -5359,6 +5358,9 @@ footer.contact-footer .footer-content-wrapper {
   }
 }
 @media screen and (max-width: 600px) {
+  .contact-wrapper .question {
+    padding-bottom: 25px;
+  }
   .contact-wrapper .question .header-wrapper .desc {
     width: 100%;
   }
@@ -5366,6 +5368,7 @@ footer.contact-footer .footer-content-wrapper {
 @media screen and (max-width: 480px) {
   .contact-wrapper .question {
     padding-inline: 20px;
+    padding-bottom: 15px;
   }
   .contact-wrapper .question .header-wrapper h2 {
     font-size: 23px;
@@ -5379,10 +5382,13 @@ footer.contact-footer .footer-content-wrapper {
   .contact-wrapper .question .content-wrapper .left-wrapper .desc {
     font-size: 14px;
   }
+  footer.contact-footer .footer-content-wrapper {
+    padding-top: 10px;
+  }
 }
 @media screen and (max-width: 390px) {
   .contact-wrapper .question {
-    padding-inline: 20px;
+    padding-bottom: 10px;
   }
   .contact-wrapper .question .header-wrapper h2 {
     font-size: 21px;
@@ -5392,6 +5398,9 @@ footer.contact-footer .footer-content-wrapper {
   }
   .contact-wrapper .question .content-wrapper .left-wrapper .desc {
     font-size: 13px;
+  }
+  .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .submit-btn {
+    width: 100%;
   }
 }
 

@@ -201,6 +201,7 @@
                 font-weight: 500;
                 visibility: hidden;
                 margin-top: clamp(10px,$fs-20px,$fs-20px);
+                margin-bottom: 0;
             }
             .success-message.active{
                 visibility: visible;
@@ -373,6 +374,7 @@ footer.contact-footer .footer-content-wrapper{
 @media screen and (max-width:600px){
     .contact-wrapper {
         .question{
+            padding-bottom: 25px;
             .header-wrapper{
                 .desc{
                     width: 100%;
@@ -388,6 +390,7 @@ footer.contact-footer .footer-content-wrapper{
 
         .question{
             padding-inline: 20px;
+            padding-bottom: 15px;
             .header-wrapper{
                 h2{
                     font-size: 23px;
@@ -406,14 +409,17 @@ footer.contact-footer .footer-content-wrapper{
                 }
             }
         }
+
+    }
+    footer.contact-footer .footer-content-wrapper {
+        padding-top: 10px;
     }
 }
 
 @media screen and (max-width:390px){
     .contact-wrapper {
-
         .question{
-            padding-inline: 20px;
+            padding-bottom: 10px;
             .header-wrapper{
                 h2{
                     font-size: 21px;
@@ -428,6 +434,9 @@ footer.contact-footer .footer-content-wrapper{
                     .desc{
                         font-size: 13px;
                     }
+                }
+                .right-wrapper .contact-form .submit-btn {
+                    width: 100%;
                 }
             }
         }

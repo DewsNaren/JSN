@@ -220,7 +220,7 @@ function initsocialSlider() {
       ? "transform 0.6s ease-in-out"
       : "none";
 
-    container.style.transform = `translate3d(${-index * slideWidth}px,0,0)`;
+    container.style.transform = `translateX(${-index * slideWidth}px)`;
   }
 
   function goToSlide(next = true) {
@@ -266,7 +266,7 @@ function initsocialSlider() {
       container.prepend(clone);
     }
 
-    // 🔥 clone AFTER
+    //  clone AFTER
     for (let i = 0; i < originalCount; i++) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
@@ -275,7 +275,7 @@ function initsocialSlider() {
 
     const allSlides = container.querySelectorAll(".social-card");
 
-    // ✅ accurate width (no gap issues)
+    //  accurate width (no gap issues)
     if (allSlides.length > 1) {
       slideWidth =
         allSlides[1].offsetLeft - allSlides[0].offsetLeft;
@@ -287,7 +287,7 @@ function initsocialSlider() {
     isTransitioning = false;
 
     container.style.transform =
-      `translate3d(${-currentIndex * slideWidth}px,0,0)`;
+      `translatex(${-currentIndex * slideWidth}px)`;
   }
 
   // init slider
@@ -298,7 +298,7 @@ function initsocialSlider() {
   nextBtn.addEventListener("click", () => goToSlide(true));
   container.addEventListener("transitionend", handleTransitionEnd);
 
-  // 🔥 better resize handling
+  //  better resize handling
   let resizeTimer;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);

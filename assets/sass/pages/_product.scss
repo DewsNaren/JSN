@@ -1333,9 +1333,9 @@ footer.product-footer .footer-content-wrapper{
                     &::before{
                       content: "";
                       position: absolute;
-                      top: -2px;
-                      left: 40%;
-                      transform: translateX(-50%);
+                      top: 4px;
+                      // left: 40%;
+                      // transform: translateX(-50%);
                       width: 4px;
                       height: 4px;
                       background: #dbdbdb;
@@ -1612,7 +1612,7 @@ footer.product-footer .footer-content-wrapper{
             }
           }
           .slider-outer-container{
-            width: 88.6%;
+            width: 100%;
             .slider-inner-container{
               .slider{
                 .img-wrapper{

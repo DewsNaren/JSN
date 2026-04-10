@@ -11,19 +11,39 @@ function initChooseSlider() {
   let slideWidth = 0;
   let isTransitioning = false;
   let originalCount = 0;
+  let isInitialized = false;
 
- 
-  function updateSlide(index, animate = true) {
-    container.style.transition = animate
-      ? "transform 0.6s ease-in-out"
-      : "none";
 
-    container.style.transform = `translate3d(${-index * slideWidth}px,0,0)`;
+  function removeClones() {
+    container.querySelectorAll(".choose-us-card.clone").forEach(el => el.remove());
   }
 
 
+  function updateSlide(index, animate = true) {
+    container.style.transition = animate
+      ? "transform 0.5s ease"
+      : "none";
+
+    container.style.transform = `translateX(${-index * slideWidth}px)`;
+  }
+
+  
+  function calculateWidth() {
+    const slides = container.querySelectorAll(".choose-us-card");
+
+    if (!slides.length) return;
+
+    if (slides.length > 1) {
+      slideWidth =
+        slides[1].getBoundingClientRect().left -
+        slides[0].getBoundingClientRect().left;
+    } else {
+      slideWidth = slides[0].offsetWidth;
+    }
+  }
+
   function goToSlide(next = true) {
-    if (isTransitioning) return;
+    if (isTransitioning || slideWidth === 0) return;
 
     isTransitioning = true;
     currentIndex += next ? 1 : -1;
@@ -31,19 +51,17 @@ function initChooseSlider() {
     updateSlide(currentIndex, true);
   }
 
-  
-  function handleTransitionEnd() {
-    const allSlides = container.querySelectorAll(".choose-us-card");
 
-    // forward loop
-    if (currentIndex >= allSlides.length - originalCount) {
+  function handleTransitionEnd() {
+    const slides = container.querySelectorAll(".choose-us-card");
+
+    if (currentIndex >= slides.length - originalCount) {
       currentIndex = originalCount;
       updateSlide(currentIndex, false);
     }
 
-    // backward loop
     if (currentIndex < originalCount) {
-      currentIndex = allSlides.length - originalCount - 1;
+      currentIndex = slides.length - originalCount - 1;
       updateSlide(currentIndex, false);
     }
 
@@ -52,99 +70,75 @@ function initChooseSlider() {
 
 
   function init() {
-    container.style.transition = "none";
-
-    // remove old clones
-    container.querySelectorAll(".choose-us-card.clone").forEach(c => c.remove());
+    if (isInitialized) return;
 
     const slides = [...container.querySelectorAll(".choose-us-card")];
     if (!slides.length) return;
 
     originalCount = slides.length;
 
-    // clone before
+
     for (let i = originalCount - 1; i >= 0; i--) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.prepend(clone);
     }
 
-    // clone after
+
     for (let i = 0; i < originalCount; i++) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.append(clone);
     }
 
-    const allSlides = container.querySelectorAll(".choose-us-card");
-
-    // calculate width
-    if (allSlides.length > 1) {
-      slideWidth =
-        allSlides[1].offsetLeft - allSlides[0].offsetLeft;
-    } else {
-      slideWidth = allSlides[0].offsetWidth;
-    }
+    calculateWidth();
 
     currentIndex = originalCount;
-    isTransitioning = false;
-
     updateSlide(currentIndex, false);
+
+    isInitialized = true;
   }
 
-
-  init();
-
-  // click events
 
   nextBtn?.addEventListener("click", () => goToSlide(true));
   container.addEventListener("transitionend", handleTransitionEnd);
 
 
-
   let startX = 0;
   let startY = 0;
-  const swipeThreshold = 60;
 
-  function startSwipe(e) {
+  container.addEventListener("touchstart", (e) => {
     startX = e.changedTouches[0].screenX;
     startY = e.changedTouches[0].screenY;
-  }
+  }, { passive: true });
 
-  function endSwipe(e) {
-    const endX = e.changedTouches[0].screenX;
-    const endY = e.changedTouches[0].screenY;
-
-    const dx = endX - startX;
-    const dy = endY - startY;
-
+  container.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].screenX - startX;
+    const dy = e.changedTouches[0].screenY - startY;
 
     if (
       Math.abs(dx) > Math.abs(dy) &&
-      Math.abs(dx) > swipeThreshold &&
+      Math.abs(dx) > 60 &&
       !isTransitioning
     ) {
-
       goToSlide(dx < 0);
     }
-  }
-
-  container.addEventListener("touchstart", startSwipe, { passive: true });
-  container.addEventListener("touchend", endSwipe);
-
-
-  let resizeTimer;
-
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(() => {
-      init();
-    }, 150);
   });
+
+
+  const observer = new ResizeObserver(() => {
+    calculateWidth();
+
+
+    container.style.transition = "none";
+    container.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+  });
+
+  observer.observe(container);
+
+
+  init();
 }
-
-
 
 initChooseSlider();
 

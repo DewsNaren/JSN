@@ -1,6 +1,6 @@
 @use "../abstracts/index" as *;
 .people-say{
-    padding: clamp(25px,6.3%, 6.3%) clamp(20px,10.4%, 10.4%) clamp(25px,7.4%, 7.4%);
+    padding: clamp(35px,6.3%, 6.3%) clamp(20px,10.4%, 10.4%) clamp(35px,7.4%, 7.4%);
     h2{
         font-family: "Lato", sans-serif !important;
         font-size: clamp(24px, $fs-48px, $fs-48px);
@@ -211,10 +211,18 @@
 
 @media screen and (max-width:600px){
     .people-say{
-        padding-inline: clamp(20px,5%, 5%);
+        
+        padding: clamp(35px, 6.3%, 6.3%) 20px clamp(35px, 7.4%, 7.4%);
+        
         .people-say-desc{
             width: 100%;
             
+        }
+        .client-wrapper{
+            .client-container{
+                gap: 25px;
+                
+            }
         }
     }
 }
