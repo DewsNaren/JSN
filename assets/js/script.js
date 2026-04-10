@@ -172,3 +172,39 @@ function toggleImages(text){
 }
 
 
+//Counter effect
+const counters = document.querySelectorAll('.help-you .count');
+
+function animateCounter(counter, duration = 2000) {
+  const target = +counter.dataset.count;
+  const steps = 100; 
+  const increment = target / steps; 
+  const intervalTime = duration / steps; 
+  let current = 0;
+  let stepCount = 0;
+
+  const timer = setInterval(() => {
+    current += increment;
+    stepCount++;
+
+    if (stepCount >= steps) {
+      counter.innerHTML =`${ target} <sup>+</sup>` ;
+      clearInterval(timer);
+    } 
+    else {
+      counter.innerHTML =` ${Math.floor(current)} <sup>+</sup>`;
+    }
+  }, intervalTime);
+}
+
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target, 2000); 
+      // obs.unobserve(entry.target); 
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => observer.observe(counter));
