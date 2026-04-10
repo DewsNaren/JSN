@@ -11,20 +11,26 @@ window.addEventListener('scroll', () => {
 
 //testimonial slider
 
-function inittestiSlider(testiWrapper) {
-  if (!testiWrapper) return;
+let testiInitialized = false;
+let testiResizeObserver = null;
+let testiResizeTimer = null;
+let testiOriginalCount = 0;
+
+function initTestiSlider(testiWrapper) {
+  if (!testiWrapper || testiInitialized) return;
+
+  testiInitialized = true;
 
   const container = testiWrapper.querySelector(".testimonial-slider-inner-container");
   const prevBtn = testiWrapper.querySelector(".prev-btn");
   const nextBtn = testiWrapper.querySelector(".next-btn");
 
-  if (!container) return;
-
   let currentIndex = 0;
   let slideWidth = 0;
   let isTransitioning = false;
-  let originalCount = 0;
 
+
+  // update 
 
   function updateSlide(index, animate = true) {
     const wrapperWidth = testiWrapper.offsetWidth;
@@ -32,19 +38,12 @@ function inittestiSlider(testiWrapper) {
     const offset =
       index * slideWidth - (wrapperWidth - slideWidth) / 2;
 
-    container.style.transition = animate
-      ? "transform 0.6s ease"
-      : "none";
-
+    container.style.transition = animate ? "transform 0.6s ease" : "none";
     container.style.transform = `translate3d(${-offset}px,0,0)`;
-
-    const slides = container.querySelectorAll(".testimonial-card");
-
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-    });
   }
 
+
+  // move
 
   function goToSlide(next = true) {
     if (isTransitioning) return;
@@ -55,19 +54,17 @@ function inittestiSlider(testiWrapper) {
     updateSlide(currentIndex, true);
   }
 
-
+  
   function handleTransitionEnd() {
     const slides = container.querySelectorAll(".testimonial-card");
 
-
-    if (currentIndex >= slides.length - originalCount) {
-      currentIndex = originalCount;
+    if (currentIndex >= slides.length - testiOriginalCount) {
+      currentIndex = testiOriginalCount;
       updateSlide(currentIndex, false);
     }
 
-   
-    if (currentIndex < originalCount) {
-      currentIndex = slides.length - originalCount - 1;
+    if (currentIndex < testiOriginalCount) {
+      currentIndex = slides.length - testiOriginalCount - 1;
       updateSlide(currentIndex, false);
     }
 
@@ -75,131 +72,131 @@ function inittestiSlider(testiWrapper) {
   }
 
 
+  function measureAndPosition() {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const slides = container.querySelectorAll(".testimonial-card");
+        if (!slides.length) return;
+
+        // reset
+        container.style.transform = "none";
+        container.offsetHeight;
+
+        // accurate width calc
+        const rect1 = slides[0].getBoundingClientRect();
+        const rect2 = slides[1]?.getBoundingClientRect();
+
+        slideWidth = rect2
+          ? rect2.left - rect1.left
+          : rect1.width;
+
+        currentIndex = testiOriginalCount;
+        isTransitioning = false;
+
+        container.style.transition = "none";
+        updateSlide(currentIndex, false);
+      });
+    });
+  }
+
+
+  // init
+ 
   function init() {
     container.style.transition = "none";
+    container.style.transform = "none";
 
-
+    // remove old clones
     container.querySelectorAll(".clone").forEach(c => c.remove());
 
-    const originalSlides = [...container.querySelectorAll(".testimonial-card")];
-    if (!originalSlides.length) return;
+    const slides = [...container.querySelectorAll(".testimonial-card")];
+    if (!slides.length) return;
 
-    originalCount = originalSlides.length;
+    testiOriginalCount = slides.length;
 
-
-    for (let i = originalCount - 1; i >= 0; i--) {
-      const clone = originalSlides[i].cloneNode(true);
+    // prepend clones
+    for (let i = testiOriginalCount - 1; i >= 0; i--) {
+      const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.prepend(clone);
     }
 
-
-    for (let i = 0; i < originalCount; i++) {
-      const clone = originalSlides[i].cloneNode(true);
+    // append clones
+    for (let i = 0; i < testiOriginalCount; i++) {
+      const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.append(clone);
     }
 
-    const slides = container.querySelectorAll(".testimonial-card");
-
-
-    if (slides.length > 1) {
-      slideWidth =
-        slides[1].offsetLeft - slides[0].offsetLeft;
-    } else {
-      slideWidth = slides[0].offsetWidth;
-    }
-
-    currentIndex = originalCount;
-    isTransitioning = false;
-
-    updateSlide(currentIndex, false);
+    measureAndPosition();
   }
-
 
   init();
 
-//btn click
-  nextBtn?.addEventListener("click", () => goToSlide(true));
-  prevBtn?.addEventListener("click", () => goToSlide(false));
 
+  // click events
+
+  const prevHandler = () => goToSlide(false);
+  const nextHandler = () => goToSlide(true);
+
+  prevBtn?.addEventListener("click", prevHandler);
+  nextBtn?.addEventListener("click", nextHandler);
   container.addEventListener("transitionend", handleTransitionEnd);
-  container.addEventListener("transitionend", handleTransitionEnd);
+
+  // store handlers (for destroy)
+  testiWrapper._prevHandler = prevHandler;
+  testiWrapper._nextHandler = nextHandler;
+  testiWrapper._transitionHandler = handleTransitionEnd;
 
 
-  let startX = 0;
-  let startY = 0;
-  const swipeThreshold = 50;
+  // resize observer
 
-  function startSwipe(e) {
-    startX = e.changedTouches[0].screenX;
-    startY = e.changedTouches[0].screenY;
-  }
-
-  function endSwipe(e) {
-    const endX = e.changedTouches[0].screenX;
-    const endY = e.changedTouches[0].screenY;
-    const dx = endX - startX;
-    const dy = endY - startY;
-
-    if (
-      Math.abs(dx) > Math.abs(dy) &&
-      Math.abs(dx) > swipeThreshold &&
-      !isTransitioning
-    ) {
-      goToSlide(dx < 0);
-    }
-  }
-
-  container.addEventListener("touchstart", startSwipe, { passive: true });
-  container.addEventListener("touchend", endSwipe);
-
-
-  let resizeTimer;
-
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(() => {
+  testiResizeObserver = new ResizeObserver(() => {
+    clearTimeout(testiResizeTimer);
+    testiResizeTimer = setTimeout(() => {
+      if (!testiInitialized) return;
       init();
-    }, 150);
+    }, 100);
   });
+
+  testiResizeObserver.observe(testiWrapper);
 }
 
 const testiWrapper = document.querySelector(".testimonial-slider-wrapper");
 
 if (testiWrapper) {
-  inittestiSlider(testiWrapper);
+  initTestiSlider(testiWrapper);
 
 }
-
-
 
 //client marque
 
 const clientContainer=document.querySelector(".client-container");
 
 if(clientContainer){
-    let position=0;
-    function clientMarque(){
-        const scrollSpeed=1.3;
-        position+=scrollSpeed;
+  let position=0;
+  function clientMarque(){
+    const scrollSpeed=1.3;
+    position+=scrollSpeed;
 
-        if(position >= clientContainer.scrollWidth/2){
-            position=0;
-        }
-
-        clientContainer.style.transform= `translateX(-${position}px)`
-        requestAnimationFrame(clientMarque)
+    if(position >= clientContainer.scrollWidth/2){
+      position=0;
     }
-    clientContainer.innerHTML+=clientContainer.innerHTML;
-    requestAnimationFrame(clientMarque)
+
+    clientContainer.style.transform= `translateX(-${position}px)`
+      requestAnimationFrame(clientMarque)
+  }
+  clientContainer.innerHTML+=clientContainer.innerHTML;
+  requestAnimationFrame(clientMarque)
 }
 
 
 const socialWraper = document.querySelector(".social-card-wrapper");
 
 let sliderInitialized = false;
+let internalResizeTimer = null;
+let internalResizeHandler = null;
+let originalCount = 0;
 
 function initsocialSlider() {
   if (!socialWraper || sliderInitialized) return;
@@ -213,22 +210,17 @@ function initsocialSlider() {
   let currentIndex = 0;
   let slideWidth = 0;
   let isTransitioning = false;
-  let originalCount = 0;
+  
 
   function updateSlide(index, animate = true) {
-    container.style.transition = animate
-      ? "transform 0.6s ease-in-out"
-      : "none";
-
+    container.style.transition = animate ? "transform 0.6s ease-in-out" : "none";
     container.style.transform = `translateX(${-index * slideWidth}px)`;
   }
 
   function goToSlide(next = true) {
     if (isTransitioning) return;
-
     isTransitioning = true;
     currentIndex += next ? 1 : -1;
-
     updateSlide(currentIndex, true);
   }
 
@@ -248,10 +240,34 @@ function initsocialSlider() {
     isTransitioning = false;
   }
 
+  function measureAndPosition() {
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const allSlides = container.querySelectorAll(".social-card");
+        if (!allSlides.length) return;
+
+        container.style.transform = "none";
+        container.offsetHeight; 
+
+        slideWidth = container.scrollWidth / allSlides.length;
+
+        if (!slideWidth) {
+          slideWidth = allSlides[0].getBoundingClientRect().width;
+        }
+
+        currentIndex = originalCount;
+        isTransitioning = false;
+
+        container.style.transition = "none";
+        container.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+      });
+    });
+  }
+
   function init() {
     container.style.transition = "none";
-
-    // remove old clones
+    container.style.transform = "none";
     container.querySelectorAll(".social-card.clone").forEach(c => c.remove());
 
     const slides = [...container.querySelectorAll(".social-card")];
@@ -259,83 +275,152 @@ function initsocialSlider() {
 
     originalCount = slides.length;
 
-    // 🔥 clone BEFORE
     for (let i = originalCount - 1; i >= 0; i--) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.prepend(clone);
     }
 
-    //  clone AFTER
     for (let i = 0; i < originalCount; i++) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.append(clone);
     }
 
-    const allSlides = container.querySelectorAll(".social-card");
-
-    //  accurate width (no gap issues)
-    if (allSlides.length > 1) {
-      slideWidth =
-        allSlides[1].offsetLeft - allSlides[0].offsetLeft;
-    } else {
-      slideWidth = allSlides[0].offsetWidth;
-    }
-
-    currentIndex = originalCount;
-    isTransitioning = false;
-
-    container.style.transform =
-      `translatex(${-currentIndex * slideWidth}px)`;
+    measureAndPosition();
   }
 
-  // init slider
   init();
 
-  // events
-  prevBtn.addEventListener("click", () => goToSlide(false));
-  nextBtn.addEventListener("click", () => goToSlide(true));
+  const prevHandler = () => goToSlide(false);
+  const nextHandler = () => goToSlide(true);
+
+  prevBtn.addEventListener("click", prevHandler);
+  nextBtn.addEventListener("click", nextHandler);
   container.addEventListener("transitionend", handleTransitionEnd);
 
-  //  better resize handling
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
+  socialWraper._prevHandler = prevHandler;
+  socialWraper._nextHandler = nextHandler;
+  socialWraper._transitionHandler = handleTransitionEnd;
+
+  internalResizeHandler = () => {
+    clearTimeout(internalResizeTimer);
+    internalResizeTimer = setTimeout(() => {
+      if (!sliderInitialized) return;
       init();
     }, 150);
-  });
+  };
+
+  window.addEventListener("resize", internalResizeHandler);
 }
 
 function destroySlider() {
   if (!socialWraper || !sliderInitialized) return;
 
   const container = socialWraper.querySelector(".social-card-inner-container");
+  const prevBtn = socialWraper.querySelector(".prev");
+  const nextBtn = socialWraper.querySelector(".next");
 
-  // remove clones
   container.querySelectorAll(".clone").forEach(c => c.remove());
-
-  // reset styles
   container.style.transform = "";
   container.style.transition = "";
 
+  if (socialWraper._prevHandler) {
+    prevBtn.removeEventListener("click", socialWraper._prevHandler);
+    delete socialWraper._prevHandler;
+  }
+  if (socialWraper._nextHandler) {
+    nextBtn.removeEventListener("click", socialWraper._nextHandler);
+    delete socialWraper._nextHandler;
+  }
+  if (socialWraper._transitionHandler) {
+    container.removeEventListener("transitionend", socialWraper._transitionHandler);
+    delete socialWraper._transitionHandler;
+  }
+
+  if (internalResizeHandler) {
+    window.removeEventListener("resize", internalResizeHandler);
+    internalResizeHandler = null;
+  }
+
+  clearTimeout(internalResizeTimer);
+  internalResizeTimer = null;
   sliderInitialized = false;
 }
 
 function handleResponsiveSlider() {
-  if (window.innerWidth <= 768) {
-    initsocialSlider();
-  } else {
-    destroySlider();
-  }
+  requestAnimationFrame(() => {
+    const isMobile = socialWraper.offsetWidth <= 768;
+
+    if (isMobile) {
+      if (!sliderInitialized) {
+        initsocialSlider();
+      } else {
+  
+        const container = socialWraper.querySelector(".social-card-inner-container");
+        const allSlides = container.querySelectorAll(".social-card");
+        if (!allSlides.length) return;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            container.style.transition = "none";
+            container.style.transform = "none";
+            container.offsetHeight;
+
+            const newSlideWidth = container.scrollWidth / allSlides.length;
+            const newCurrentIndex = originalCount;
+
+            container.style.transform = `translateX(${-newCurrentIndex * newSlideWidth}px)`;
+          });
+        });
+      }
+    } else {
+      if (sliderInitialized) destroySlider();
+    }
+  });
 }
 
-// init on load
-handleResponsiveSlider();
 
-// handle resize
-window.addEventListener("resize", handleResponsiveSlider);
+function recheckSlider() {
+  setTimeout(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        handleResponsiveSlider();
+      });
+    });
+  }, 200);
+}
+
+if(socialWraper){
+  window.addEventListener("focus", recheckSlider);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      recheckSlider();
+    }
+  });
+
+  let responsiveObserver = null;
+  let responsiveTimer = null;
+
+  function startObserver() {
+    if (!socialWraper) return;
+
+    responsiveObserver = new ResizeObserver(() => {
+      clearTimeout(responsiveTimer);
+      responsiveTimer = setTimeout(() => {
+        handleResponsiveSlider();
+      }, 100);
+    });
+
+    responsiveObserver.observe(socialWraper);
+  }
+
+  // init
+  handleResponsiveSlider();
+  startObserver();
+}
+
 
 //navbar
 const body=document.querySelector("body")

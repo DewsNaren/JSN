@@ -312,6 +312,9 @@ footer{
     footer{
         .social-header-container{
             padding-bottom: clamp(25px, 6.7%, 6.7%);
+            .company-name {
+                margin-bottom: 0;
+            }
         }
         .social-card-wrapper{
             padding: clamp(25px, 5.5%, 5.5%) clamp(20px, 6%, 6%) clamp(30px, 5.5%, 5.5%);

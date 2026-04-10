@@ -5,10 +5,6 @@
 .home-header.about-header .header-actions nav{
   ul li .nav-link{
     padding-inline: clamp(10px, $fs-29px, $fs-29px);
-    &::before{
-      left: 4px;
-      width: 88%;
-    }
     &.active {
       color: $orange-33;
     }
@@ -464,7 +460,7 @@ footer.about-footer .footer-content-wrapper{
 
 
 @media screen and (max-width:1024px){
-  .home-header .header-actions nav {
+  .home-header.about-header .header-actions nav {
     padding-right: 5px;
   }
   .about-wrapper{
@@ -509,6 +505,12 @@ footer.about-footer .footer-content-wrapper{
 }
 
 @media screen and (max-width:992px){
+  .home-header.about-header .header-actions nav {
+    padding-right: 0px;
+    ul li .nav-link{
+      padding-inline: 0;
+    }
+  }
   .about-wrapper{
     .story .time-wrapper .time-container .content-container .circle {
       width: 7px;
