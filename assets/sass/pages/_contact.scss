@@ -355,7 +355,7 @@ footer.contact-footer .footer-content-wrapper{
                     }
                     .contact-form{
                         .submit-btn{
-                            padding-inline: 20px;
+                            padding-inline: 25px;
                         }
                         .form-wrapper{
                             gap: 25px;
@@ -437,6 +437,8 @@ footer.contact-footer .footer-content-wrapper{
                 }
                 .right-wrapper .contact-form .submit-btn {
                     width: 100%;
+                    justify-content: center;
+                    height: 8px;
                 }
             }
         }

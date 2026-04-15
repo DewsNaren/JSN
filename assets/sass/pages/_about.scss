@@ -4,7 +4,6 @@
 
 .home-header.about-header .header-actions nav{
   ul li .nav-link{
-    padding-inline: clamp(10px, $fs-29px, $fs-29px);
     &.active {
       color: $orange-33;
     }
@@ -460,9 +459,6 @@ footer.about-footer .footer-content-wrapper{
 
 
 @media screen and (max-width:1024px){
-  .home-header.about-header .header-actions nav {
-    padding-right: 5px;
-  }
   .about-wrapper{
     .experience .content-container{
       padding-inline:clamp(20px, $fs-50px, 87px);
