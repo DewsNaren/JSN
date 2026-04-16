@@ -27,19 +27,18 @@ function initChooseSlider() {
     container.style.transform = `translateX(${-index * slideWidth}px)`;
   }
 
-  
+
   function calculateWidth() {
     const slides = container.querySelectorAll(".choose-us-card");
-
     if (!slides.length) return;
 
-    if (slides.length > 1) {
-      slideWidth =
-        slides[1].getBoundingClientRect().left -
-        slides[0].getBoundingClientRect().left;
-    } else {
-      slideWidth = slides[0].offsetWidth;
-    }
+    const styles = getComputedStyle(container);
+
+    const gap = parseFloat(styles.columnGap || styles.gap || 0);
+
+    const cardWidth = slides[0].offsetWidth;
+    
+    slideWidth = cardWidth + gap;
   }
 
   function goToSlide(next = true) {

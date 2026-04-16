@@ -125,10 +125,8 @@
             }
             .book-btn{
                 transition: all 0.3s ease-in;
-                color: $black;
                 &:hover{
                     background-color: $black;
-                    color: $white;
                 }
             }
         } 

@@ -176,11 +176,9 @@ a {
 }
 .home-header.scrolled .header-actions .book-btn {
   transition: all 0.3s ease-in;
-  color: black;
 }
 .home-header.scrolled .header-actions .book-btn:hover {
   background-color: black;
-  color: white;
 }
 .home-header.scrolled .menu-btn img {
   filter: invert(0);
@@ -1574,9 +1572,6 @@ footer .chat-btn-container .chat-btn:hover {
     height: 15px;
   }
 }
-.home-header.about-header .header-actions nav ul li .nav-link {
-  padding-inline: clamp(10px, 1.5vw, 1.5vw);
-}
 .home-header.about-header .header-actions nav ul li .nav-link.active {
   color: #fd9c33;
 }
@@ -1967,9 +1962,6 @@ footer.about-footer .footer-content-wrapper {
   }
 }
 @media screen and (max-width: 1024px) {
-  .home-header.about-header .header-actions nav {
-    padding-right: 5px;
-  }
   .about-wrapper .experience .content-container {
     padding-inline: clamp(20px, 2.61vw, 87px);
   }
@@ -2047,8 +2039,7 @@ footer.about-footer .footer-content-wrapper {
 @media screen and (max-width: 768px) {
   .about-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .about-wrapper .hero-section .hero-content-container h2 {
     font-size: clamp(24px, 3.13vw, 3.13vw);
@@ -2117,16 +2108,13 @@ footer.about-footer .footer-content-wrapper {
     align-items: center;
   }
   .about-wrapper .accomplish .img-gallery-wrapper .gallery-container-2 .gallery {
-    width: -moz-fit-content;
     width: fit-content;
     aspect-ratio: 1/1;
-    height: -moz-fit-content;
     height: fit-content;
   }
   .about-wrapper .accomplish .img-gallery-wrapper .gallery-container-2 img {
     display: block;
-    -o-object-fit: none;
-       object-fit: none;
+    object-fit: none;
   }
   .about-wrapper .core .header-wrapper h2 {
     font-size: 23px;
@@ -2607,6 +2595,7 @@ footer.about-footer .footer-content-wrapper {
   width: 100%;
 }
 .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-outer-container .slider-inner-container.mobile .slider.active .img-wrapper {
+  -webkit-box-shadow: 0px 0px 15px -1px rgba(137, 146, 166, 0.63);
   box-shadow: 0px 0px 15px -1px rgba(137, 146, 166, 0.63);
   border-radius: 40px;
 }
@@ -2990,6 +2979,7 @@ footer.product-footer .footer-content-wrapper {
     width: 17%;
   }
   .product-wrapper .screenshot .slider-outer-wrapper .slider-inner-wrapper .slider-outer-container .slider-inner-container.mobile .slider.active .img-wrapper {
+    -webkit-box-shadow: 0px 0px 15px -1px rgba(137, 146, 166, 0.63);
     box-shadow: 0px 0px 15px -1px rgba(137, 146, 166, 0.63);
     border-radius: 30px;
   }
@@ -3244,8 +3234,7 @@ footer.product-footer .footer-content-wrapper {
 @media screen and (max-width: 768px) {
   .product-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .product-wrapper .hero-section .hero-content-container h2 {
     font-size: clamp(24px, 3.13vw, 3.13vw);
@@ -3809,8 +3798,7 @@ footer.product-footer .footer-content-wrapper {
 @media screen and (max-width: 768px) {
   .media-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .media-wrapper .hero-section .hero-content-container h2 {
     font-size: clamp(24px, 3.13vw, 3.13vw);
@@ -3885,8 +3873,7 @@ footer.product-footer .footer-content-wrapper {
 .media-detail-wrapper .hero-section .detail-banner-img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .media-detail-wrapper .detail-container .content {
   width: 83.3%;
@@ -3911,7 +3898,6 @@ footer.product-footer .footer-content-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   gap: 10px;
@@ -4183,8 +4169,7 @@ footer.product-footer .footer-content-wrapper {
   }
   .media-detail-wrapper .detail-container .content .sample-img-wrapper img {
     height: 200px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .media-detail-wrapper .detail-container .content .img-text {
     padding-left: 20px;
@@ -4210,8 +4195,7 @@ footer.product-footer .footer-content-wrapper {
     grid-template-columns: 1fr;
   }
   .media-detail-wrapper .detail-container .related-posts .post-card-container .post-card .img-wrapper img {
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .media-detail-wrapper .detail-container .related-posts .post-card-container .post-card h4 {
     font-size: 16px;
@@ -4626,7 +4610,6 @@ footer.product-footer .footer-content-wrapper {
 }
 .service-wrapper .newsletter .content-container .form-wrapper .email-input:-webkit-autofill, .service-wrapper .newsletter .content-container .form-wrapper .email-input:-webkit-autofill:hover, .service-wrapper .newsletter .content-container .form-wrapper .email-input:-webkit-autofill:focus, .service-wrapper .newsletter .content-container .form-wrapper .email-input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-transition: background-color 5000000s ease-in-out 0s;
   transition: background-color 5000000s ease-in-out 0s;
   -webkit-text-fill-color: white !important;
   caret-color: white;
@@ -4809,8 +4792,7 @@ footer.service-footer .footer-content-wrapper {
 @media screen and (max-width: 768px) {
   .service-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .service-wrapper .hero-section .hero-content-container h2 {
     font-size: clamp(24px, 3.13vw, 3.13vw);
@@ -4838,8 +4820,7 @@ footer.service-footer .footer-content-wrapper {
   }
   .service-wrapper .how-it-works .video-wrapper .bg-wrapper .video-img {
     height: 200px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .service-wrapper .solutions .card-wrapper .card h3 {
     font-size: 16px;
@@ -4872,8 +4853,7 @@ footer.service-footer .footer-content-wrapper {
 @media screen and (max-width: 600px) {
   .service-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .service-wrapper .commerce .header-wrapper p {
     width: 100%;
@@ -5223,10 +5203,6 @@ footer.service-footer .footer-content-wrapper {
   outline: none;
   color: rgba(0, 0, 0, 0.9);
 }
-.contact-wrapper .question .content-wrapper .right-wrapper .contact-form .form-wrapper .form-container .form-group input::-moz-placeholder {
-  font-size: clamp(13px, 1.1vw, 1.1vw);
-  color: #a7a4a4;
-}
 .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .form-wrapper .form-container .form-group input::placeholder {
   font-size: clamp(13px, 1.1vw, 1.1vw);
   color: #a7a4a4;
@@ -5237,7 +5213,6 @@ footer.service-footer .footer-content-wrapper {
 .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .form-wrapper .form-container .form-group select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.9);
-  -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
 }
 .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .form-wrapper .form-container .error {
@@ -5345,8 +5320,7 @@ footer.contact-footer .footer-content-wrapper {
 @media screen and (max-width: 768px) {
   .contact-wrapper .hero-section .banner-img {
     height: 220px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .contact-wrapper .hero-section .hero-content-container h2 {
     font-size: clamp(24px, 3.13vw, 3.13vw);
@@ -5443,4 +5417,6 @@ footer.contact-footer .footer-content-wrapper {
     justify-content: center;
     height: 8px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

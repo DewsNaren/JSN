@@ -1,11 +1,11 @@
 const homeHeader = document.querySelector('.home-header');
 const homeHeaderHeight = homeHeader.offsetHeight;   
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
+  if (window.scrollY > 20) {
       homeHeader.classList.add('scrolled');
-    } else {
-      homeHeader.classList.remove('scrolled');
-    }
+  } else {
+    homeHeader.classList.remove('scrolled');
+  }
 }); 
 
 
@@ -39,7 +39,7 @@ function initTestiSlider(testiWrapper) {
       index * slideWidth - (wrapperWidth - slideWidth) / 2;
 
     container.style.transition = animate ? "transform 0.6s ease" : "none";
-    container.style.transform = `translate3d(${-offset}px,0,0)`;
+    container.style.transform = `translateX(${-offset}px)`;
   }
 
 
