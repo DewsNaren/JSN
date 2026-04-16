@@ -73,9 +73,7 @@ function initTestiSlider(testiWrapper) {
 
 
   function measureAndPosition() {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const slides = container.querySelectorAll(".testimonial-card");
+    const slides = container.querySelectorAll(".testimonial-card");
         if (!slides.length) return;
 
         // reset
@@ -95,8 +93,7 @@ function initTestiSlider(testiWrapper) {
 
         container.style.transition = "none";
         updateSlide(currentIndex, false);
-      });
-    });
+     
   }
 
 
@@ -196,9 +193,7 @@ const socialWraper = document.querySelector(".social-card-wrapper");
 let sliderInitialized = false;
 let internalResizeTimer = null;
 let internalResizeHandler = null;
-
 let originalCount = 0;
-let slideWidth = 0; 
 
 function initsocialSlider() {
   if (!socialWraper || sliderInitialized) return;
@@ -210,7 +205,9 @@ function initsocialSlider() {
   const nextBtn = socialWraper.querySelector(".next");
 
   let currentIndex = 0;
+  let slideWidth = 0;
   let isTransitioning = false;
+  
 
   function updateSlide(index, animate = true) {
     container.style.transition = animate ? "transform 0.6s ease-in-out" : "none";
@@ -220,7 +217,6 @@ function initsocialSlider() {
   function goToSlide(next = true) {
     if (isTransitioning) return;
     isTransitioning = true;
-
     currentIndex += next ? 1 : -1;
     updateSlide(currentIndex, true);
   }
@@ -242,32 +238,30 @@ function initsocialSlider() {
   }
 
   function measureAndPosition() {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+
         const allSlides = container.querySelectorAll(".social-card");
         if (!allSlides.length) return;
 
         container.style.transform = "none";
-        container.offsetHeight;
+        container.offsetHeight; 
 
-        
-        slideWidth =
-          container.scrollWidth / allSlides.length ||
-          allSlides[0].getBoundingClientRect().width;
+        slideWidth = container.scrollWidth / allSlides.length;
+
+        if (!slideWidth) {
+          slideWidth = allSlides[0].getBoundingClientRect().width;
+        }
 
         currentIndex = originalCount;
         isTransitioning = false;
 
         container.style.transition = "none";
         container.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
-      });
-    });
+  
   }
 
   function init() {
     container.style.transition = "none";
     container.style.transform = "none";
-
     container.querySelectorAll(".social-card.clone").forEach(c => c.remove());
 
     const slides = [...container.querySelectorAll(".social-card")];
@@ -275,14 +269,12 @@ function initsocialSlider() {
 
     originalCount = slides.length;
 
-    // prepend clones
     for (let i = originalCount - 1; i >= 0; i--) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
       container.prepend(clone);
     }
 
-    // append clones
     for (let i = 0; i < originalCount; i++) {
       const clone = slides[i].cloneNode(true);
       clone.classList.add("clone");
@@ -305,15 +297,12 @@ function initsocialSlider() {
   socialWraper._nextHandler = nextHandler;
   socialWraper._transitionHandler = handleTransitionEnd;
 
-  //  resize
   internalResizeHandler = () => {
     clearTimeout(internalResizeTimer);
     internalResizeTimer = setTimeout(() => {
       if (!sliderInitialized) return;
-
-      destroySlider();    
-      initsocialSlider();  
-    }, 200);
+      init();
+    }, 150);
   };
 
   window.addEventListener("resize", internalResizeHandler);
@@ -327,7 +316,6 @@ function destroySlider() {
   const nextBtn = socialWraper.querySelector(".next");
 
   container.querySelectorAll(".clone").forEach(c => c.remove());
-
   container.style.transform = "";
   container.style.transition = "";
 
@@ -335,12 +323,10 @@ function destroySlider() {
     prevBtn.removeEventListener("click", socialWraper._prevHandler);
     delete socialWraper._prevHandler;
   }
-
   if (socialWraper._nextHandler) {
     nextBtn.removeEventListener("click", socialWraper._nextHandler);
     delete socialWraper._nextHandler;
   }
-
   if (socialWraper._transitionHandler) {
     container.removeEventListener("transitionend", socialWraper._transitionHandler);
     delete socialWraper._transitionHandler;
@@ -353,34 +339,50 @@ function destroySlider() {
 
   clearTimeout(internalResizeTimer);
   internalResizeTimer = null;
-
   sliderInitialized = false;
 }
 
 function handleResponsiveSlider() {
-  if (!socialWraper) return;
-
   const isMobile = socialWraper.offsetWidth <= 768;
 
-  if (isMobile) {
-    if (!sliderInitialized) {
-      initsocialSlider();
+    if (isMobile) {
+      if (!sliderInitialized) {
+        initsocialSlider();
+      } else {
+  
+        const container = socialWraper.querySelector(".social-card-inner-container");
+        const allSlides = container.querySelectorAll(".social-card");
+        if (!allSlides.length) return;
+
+      
+        container.style.transition = "none";
+        container.style.transform = "none";
+        container.offsetHeight;
+
+        const newSlideWidth = container.scrollWidth / allSlides.length;
+        const newCurrentIndex = originalCount;
+
+        container.style.transform = `translateX(${-newCurrentIndex * newSlideWidth}px)`;
+  
+      
+      }
+    } else {
+      if (sliderInitialized) destroySlider();
     }
-  } else {
-    if (sliderInitialized) {
-      destroySlider();
-    }
-  }
+
 }
 
-// 
+
 function recheckSlider() {
-  setTimeout(() => {
-    handleResponsiveSlider();
-  }, 300);
-}
 
-if (socialWraper) {
+  handleResponsiveSlider();
+
+    if (typeof internalResizeHandler === "function") {
+      internalResizeHandler();
+    }
+
+}
+if(socialWraper){
   window.addEventListener("focus", recheckSlider);
 
   document.addEventListener("visibilitychange", () => {
@@ -393,11 +395,13 @@ if (socialWraper) {
   let responsiveTimer = null;
 
   function startObserver() {
+    if (!socialWraper) return;
+
     responsiveObserver = new ResizeObserver(() => {
       clearTimeout(responsiveTimer);
       responsiveTimer = setTimeout(() => {
         handleResponsiveSlider();
-      }, 150);
+      }, 100);
     });
 
     responsiveObserver.observe(socialWraper);
