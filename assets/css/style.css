@@ -17,14 +17,6 @@ a {
 }
 
 @font-face {
-  font-family: "Nunito Sans";
-  font-style: normal;
-  font-weight: 200 1000;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("../fonts/nunito-sans.woff2") format("woff2");
-}
-@font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 300 800;
@@ -5415,7 +5407,7 @@ footer.contact-footer .footer-content-wrapper {
   .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .submit-btn {
     width: 100%;
     justify-content: center;
-    height: 8px;
+    gap: 11px;
   }
 }
 
