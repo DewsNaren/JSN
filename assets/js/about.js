@@ -17,21 +17,21 @@ function animateCounter(counter, duration = 2000) {
     stepCount++;
 
     if (stepCount >= steps) {
-        if(variable){
-            counter.innerHTML =`${target}${variable} <span>${symbol}</span>` 
-        }
-        else{
-            counter.innerHTML =`${target} <span>${symbol}</span>` 
+      if(variable){
+        counter.innerHTML =`${target}${variable} <span>${symbol}</span>` 
+      }
+      else{
+          counter.innerHTML =`${target} <span>${symbol}</span>` 
         }
       clearInterval(timer);
     } 
     else {
       if(variable){
-            counter.innerHTML =`${Math.floor(current)}${variable} <span>${symbol}</span>` 
-        }
-        else{
-            counter.innerHTML =`${Math.floor(current)} <span>${symbol}</span>` 
-        }
+          counter.innerHTML =`${Math.floor(current)}${variable} <span>${symbol}</span>` 
+      }
+      else{
+        counter.innerHTML =`${Math.floor(current)} <span>${symbol}</span>` 
+      }
     }
   }, intervalTime);
 }
@@ -41,7 +41,7 @@ const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       animateCounter(entry.target, 2000); 
-      // obs.unobserve(entry.target); 
+      obs.unobserve(entry.target); 
     }
   });
 }, { threshold: 0.5 });

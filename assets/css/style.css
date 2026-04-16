@@ -5390,7 +5390,7 @@ footer.contact-footer .footer-content-wrapper {
     font-size: 18px;
   }
   .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .submit-btn {
-    padding-inline: 20px;
+    padding-inline: 25px;
   }
   .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .form-wrapper {
     gap: 25px;
@@ -5440,5 +5440,7 @@ footer.contact-footer .footer-content-wrapper {
   }
   .contact-wrapper .question .content-wrapper .right-wrapper .contact-form .submit-btn {
     width: 100%;
+    justify-content: center;
+    height: 8px;
   }
 }/*# sourceMappingURL=style.css.map */

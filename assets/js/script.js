@@ -175,7 +175,7 @@ function toggleImages(text){
 //Counter effect
 const counters = document.querySelectorAll('.help-you .count');
 
-function animateCounter(counter, duration = 2000) {
+function animateCounter(counter, duration) {
   const target = +counter.dataset.count;
   const steps = 100; 
   const increment = target / steps; 
@@ -202,7 +202,7 @@ const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       animateCounter(entry.target, 2000); 
-      // obs.unobserve(entry.target); 
+      obs.unobserve(entry.target); 
     }
   });
 }, { threshold: 0.5 });
